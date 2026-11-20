@@ -1,0 +1,11 @@
+.venv/
+__pycache__/
+*.pyc
+.env
+.qdrant/
+.cache/
+.pytest_cache/
+.ruff_cache/
+eval/reports/*.json
+!eval/reports/baseline.json
+.DS_Store

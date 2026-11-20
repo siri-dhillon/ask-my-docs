@@ -1,0 +1,12 @@
+<html><head><title>Pod Security Policies | Kubernetes</title><meta name='source' content='https://kubernetes.io/docs/concepts/security/pod-security-policy/'></head><body><main><div class="td-content"><h1 data-pagefind-weight="10">Pod Security Policies</h1><header class="article-meta"></header><div class="alert alert-warning" role="alert"><h4 class="alert-heading">Removed feature</h4>PodSecurityPolicy was <a href="/blog/2021/04/08/kubernetes-1-21-release-announcement/#podsecuritypolicy-deprecation">deprecated</a>
+in Kubernetes v1.21, and removed from Kubernetes in v1.25.</div><p>Instead of using PodSecurityPolicy, you can enforce similar restrictions on Pods using
+either or both:</p><ul><li><a href="/docs/concepts/security/pod-security-admission/">Pod Security Admission</a></li><li>a 3rd party admission plugin, that you deploy and configure yourself</li></ul><p>For a migration guide, see <a href="/docs/tasks/configure-pod-container/migrate-from-psp/">Migrate from PodSecurityPolicy to the Built-In PodSecurity Admission Controller</a>.
+For more information on the removal of this API,
+see <a href="/blog/2021/04/06/podsecuritypolicy-deprecation-past-present-and-future/">PodSecurityPolicy Deprecation: Past, Present, and Future</a>.</p><p>If you are not running Kubernetes v1.37, check the documentation for
+your version of Kubernetes.</p><div id="pre-footer"><h2 id="feedback">Feedback</h2><p class="feedback--prompt">Was this page helpful?</p><button class="button mb-4 feedback--yes">Yes</button>
+<button class="button mb-4 feedback--no">No</button><p class="feedback--response feedback--response__hidden">Thanks for the feedback. If you have a specific, answerable question about how to use Kubernetes, ask it on
+<a href="https://stackoverflow.com/questions/tagged/kubernetes" rel="noopener" target="_blank">Stack Overflow</a>.
+Open an issue in the <a href="https://www.github.com/kubernetes/website/">GitHub Repository</a> if you want to
+<a class="feedback--link" href="https://github.com/kubernetes/website/issues/new?title=Issue%20with%20k8s.io" rel="noopener" target="_blank">report a problem</a>
+or
+<a class="feedback--link" href="https://github.com/kubernetes/website/issues/new?title=Improvement%20for%20k8s.io" rel="noopener" target="_blank">suggest an improvement</a>.</p></div><div class="td-page-meta__lastmod">Last modified November 05, 2022 at 6:22 PM PST: <a href="https://github.com/kubernetes/website/commit/4e006c898ddea5556da5872cefbac1ac8e6c5308">Tweak page about PSP removal (4e006c898d)</a></div></div></main></body></html>

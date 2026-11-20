@@ -1,0 +1,23 @@
+<html><head><title>Security For Windows Nodes | Kubernetes</title><meta name='source' content='https://kubernetes.io/docs/concepts/security/windows-security/'></head><body><main><div class="td-content"><h1 data-pagefind-weight="10">Security For Windows Nodes</h1><header class="article-meta"></header><p>This page describes security considerations and best practices specific to the Windows operating system.</p><h2 id="protection-for-secret-data-on-nodes">Protection for Secret data on nodes<a aria-label="Heading self-link" class="td-heading-self-link" href="#protection-for-secret-data-on-nodes"></a></h2><p>On Windows, data from Secrets are written out in clear text onto the node's local
+storage (as compared to using tmpfs / in-memory filesystems on Linux). As a cluster
+operator, you should take both of the following additional measures:</p><ol><li>Use file ACLs to secure the Secrets' file location.</li><li>Apply volume-level encryption using
+<a href="https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-how-to-deploy-on-windows-server">BitLocker</a>.</li></ol><h2 id="container-users">Container users<a aria-label="Heading self-link" class="td-heading-self-link" href="#container-users"></a></h2><p><a href="/docs/tasks/configure-pod-container/configure-runasusername/">RunAsUsername</a>
+can be specified for Windows Pods or containers to execute the container
+processes as specific user. This is roughly equivalent to
+<a href="/docs/concepts/security/pod-security-policy/#users-and-groups">RunAsUser</a>.</p><p>Windows containers offer two default user accounts, ContainerUser and ContainerAdministrator.
+The differences between these two user accounts are covered in
+<a href="https://docs.microsoft.com/virtualization/windowscontainers/manage-containers/container-security#when-to-use-containeradmin-and-containeruser-user-accounts">When to use ContainerAdmin and ContainerUser user accounts</a>
+within Microsoft's <em>Secure Windows containers</em> documentation.</p><p>Local users can be added to container images during the container build process.</p><div class="alert alert-info" role="note"><h4 class="alert-heading">Note:</h4><ul><li><a href="https://hub.docker.com/_/microsoft-windows-nanoserver">Nano Server</a> based images run as
+<code>ContainerUser</code> by default</li><li><a href="https://hub.docker.com/_/microsoft-windows-servercore">Server Core</a> based images run as
+<code>ContainerAdministrator</code> by default</li></ul></div><p>Windows containers can also run as Active Directory identities by utilizing
+<a href="/docs/tasks/configure-pod-container/configure-gmsa/">Group Managed Service Accounts</a></p><h2 id="pod-level-security-isolation">Pod-level security isolation<a aria-label="Heading self-link" class="td-heading-self-link" href="#pod-level-security-isolation"></a></h2><p>Linux-specific pod security context mechanisms (such as SELinux, AppArmor, Seccomp, or custom
+POSIX capabilities) are not supported on Windows nodes.</p><p>Privileged containers are <a href="/docs/concepts/windows/intro/#compatibility-v1-pod-spec-containers-securitycontext">not supported</a>
+on Windows.
+Instead <a href="/docs/tasks/configure-pod-container/create-hostprocess-pod/">HostProcess containers</a>
+can be used on Windows to perform many of the tasks performed by privileged containers on Linux.</p><div id="pre-footer"><h2 id="feedback">Feedback</h2><p class="feedback--prompt">Was this page helpful?</p><button class="button mb-4 feedback--yes">Yes</button>
+<button class="button mb-4 feedback--no">No</button><p class="feedback--response feedback--response__hidden">Thanks for the feedback. If you have a specific, answerable question about how to use Kubernetes, ask it on
+<a href="https://stackoverflow.com/questions/tagged/kubernetes" rel="noopener" target="_blank">Stack Overflow</a>.
+Open an issue in the <a href="https://www.github.com/kubernetes/website/">GitHub Repository</a> if you want to
+<a class="feedback--link" href="https://github.com/kubernetes/website/issues/new?title=Issue%20with%20k8s.io" rel="noopener" target="_blank">report a problem</a>
+or
+<a class="feedback--link" href="https://github.com/kubernetes/website/issues/new?title=Improvement%20for%20k8s.io" rel="noopener" target="_blank">suggest an improvement</a>.</p></div><div class="td-page-meta__lastmod">Last modified June 18, 2022 at 4:28 PM PST: <a href="https://github.com/kubernetes/website/commit/d705d9ed1c285808ab27aeafb602a825e3392f93">Batch fix links (3) (d705d9ed1c)</a></div></div></main></body></html>
