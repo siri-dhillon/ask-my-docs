@@ -12,6 +12,7 @@ from pypdf import PdfReader
 from askdocs.models import Document, Section
 
 SUPPORTED = {".md", ".markdown", ".html", ".htm", ".pdf"}
+IGNORED_NAMES = {"attribution.md", "readme.md", "license.md"}  # repo housekeeping, not corpus
 _MD_HEADING = re.compile(r"^(#{1,6})\s+(.*?)\s*#*\s*$")
 _FENCE = re.compile(r"^\s*(```|~~~)")
 
@@ -120,7 +121,7 @@ def load_file(path: Path, root: Path) -> Document:
 
 def iter_documents(root: Path) -> Iterator[Document]:
     for path in sorted(root.rglob("*")):
-        if path.is_file() and path.suffix.lower() in SUPPORTED:
+        if path.is_file() and path.suffix.lower() in SUPPORTED and path.name.lower() not in IGNORED_NAMES:
             doc = load_file(path, root)
             if doc.sections:
                 yield doc

@@ -29,6 +29,7 @@ class Settings(BaseSettings):
     retrieval_mode: Literal["vector", "hybrid", "hybrid_rerank"] = "hybrid_rerank"
     candidates_per_retriever: int = 30  # how deep each retriever searches before fusion
     rrf_k: int = 60  # standard RRF constant from Cormack et al. (2009)
+    rerank_pool: int = 30  # fused candidates sent to the cross-encoder (latency ∝ pool size)
     rerank_model: str = "Xenova/ms-marco-MiniLM-L-6-v2"  # or BAAI/bge-reranker-base (bigger, slower)
     top_k: int = 5  # chunks handed to the LLM
     min_confidence: float = 0.15  # refuse when reranker probability of best chunk is below this
