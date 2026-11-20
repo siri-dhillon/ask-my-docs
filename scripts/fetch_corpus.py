@@ -100,8 +100,10 @@ def fetch_markdown(out: Path) -> tuple[int, list[str]]:
     with tempfile.TemporaryDirectory() as tmp:
         repo = Path(tmp) / "website"
         subprocess.run(["git", "clone", "-q", "--filter=blob:none", "--no-checkout", REPO, str(repo)], check=True)
-        subprocess.run(["git", "-C", str(repo), "sparse-checkout", "set",
-                        "content/en/docs/concepts", "content/en/docs/reference/glossary"], check=True)
+        subprocess.run(
+            ["git", "-C", str(repo), "sparse-checkout", "set", "content/en/docs/concepts", "content/en/docs/reference/glossary"],
+            check=True,
+        )
         subprocess.run(["git", "-C", str(repo), "checkout", "-q", COMMIT], check=True)
         glossary = load_glossary(repo)
         n = 0

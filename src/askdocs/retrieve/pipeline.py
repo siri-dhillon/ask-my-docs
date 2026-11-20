@@ -1,8 +1,8 @@
 """Retrieval pipeline with three modes, so the eval can compare them head-to-head.
 
-  vector         dense search only                                    (baseline)
-  hybrid         dense + BM25, merged with RRF
-  hybrid_rerank  dense + BM25 -> RRF -> cross-encoder rerank of the fused candidates
+vector         dense search only                                    (baseline)
+hybrid         dense + BM25, merged with RRF
+hybrid_rerank  dense + BM25 -> RRF -> cross-encoder rerank of the fused candidates
 """
 
 from __future__ import annotations
