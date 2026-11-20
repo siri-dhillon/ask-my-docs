@@ -1,0 +1,5 @@
+.venv
+.qdrant
+.cache
+.git
+eval/reports
