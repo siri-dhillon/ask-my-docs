@@ -34,6 +34,8 @@ for col, ex in zip(cols, examples, strict=True):
     if col.button(ex, use_container_width=True):
         st.session_state["q"] = ex
 
+if "q" not in st.session_state and st.query_params.get("q"):
+    st.session_state["q"] = st.query_params["q"]  # deep link: /?q=your+question
 q = st.text_input("Question", key="q", placeholder="Ask anything about Kubernetes concepts…")
 if q:
     with st.spinner("Retrieving and generating…"):

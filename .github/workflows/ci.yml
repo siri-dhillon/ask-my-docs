@@ -14,7 +14,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: astral-sh/setup-uv@v6
         with:
           enable-cache: true
@@ -27,11 +27,19 @@ jobs:
     needs: test
     runs-on: ubuntu-latest
     timeout-minutes: 40
+    permissions:
+      id-token: write   # lets the job request a GitHub OIDC token (keyless auth to the Claude API)
+      contents: read
     env:
       FASTEMBED_CACHE_PATH: ~/.cache/fastembed
-      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      # Workload Identity Federation: identifiers only, no secret. Set as repo *variables*.
+      ANTHROPIC_FEDERATION_RULE_ID: ${{ vars.ANTHROPIC_FEDERATION_RULE_ID }}
+      ANTHROPIC_ORGANIZATION_ID: ${{ vars.ANTHROPIC_ORGANIZATION_ID }}
+      ANTHROPIC_SERVICE_ACCOUNT_ID: ${{ vars.ANTHROPIC_SERVICE_ACCOUNT_ID }}
+      WIF_WORKSPACE_ID: ${{ vars.ANTHROPIC_WORKSPACE_ID }}  # only needed if the rule spans several workspaces
+      ANTHROPIC_IDENTITY_TOKEN_FILE: /tmp/gha-oidc.jwt
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: astral-sh/setup-uv@v6
         with:
           enable-cache: true
@@ -43,12 +51,21 @@ jobs:
           key: fastembed-${{ hashFiles('src/askdocs/config.py') }}
       - name: Build index
         run: uv run askdocs ingest
-      - name: Eval (retrieval always; answers when ANTHROPIC_API_KEY secret is set)
+      - name: Eval (retrieval always; answers when Workload Identity Federation is configured)
         run: |
-          if [ -n "$ANTHROPIC_API_KEY" ]; then
+          if [ -n "$ANTHROPIC_FEDERATION_RULE_ID" ]; then
+            fetch_jwt() {
+              curl -sS -H "Authorization: Bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+                "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=https://api.anthropic.com" \
+                | jq -r .value > "$ANTHROPIC_IDENTITY_TOKEN_FILE.tmp" && mv "$ANTHROPIC_IDENTITY_TOKEN_FILE.tmp" "$ANTHROPIC_IDENTITY_TOKEN_FILE"
+            }
+            if [ -n "$WIF_WORKSPACE_ID" ]; then export ANTHROPIC_WORKSPACE_ID="$WIF_WORKSPACE_ID"; fi
+            fetch_jwt
+            # GitHub OIDC tokens expire after ~5 min and the eval runs longer: keep the file fresh
+            ( while sleep 180; do fetch_jwt; done ) &
             uv run python eval/run_eval.py --check eval/eval_thresholds.yaml
           else
-            echo "::notice::ANTHROPIC_API_KEY not set - running retrieval-only eval"
+            echo "::notice::Workload Identity Federation not configured - running retrieval-only eval"
             uv run python eval/run_eval.py --retrieval-only --check eval/eval_thresholds.yaml
           fi
       - name: Job summary

@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-20T01:08:20+00:00",
+  "timestamp": "2026-11-20T01:29:22+00:00",
   "config": {
     "chunk_size": "220",
     "chunk_overlap": "40",
@@ -28,8 +28,8 @@
       "recall@5": 0.8444,
       "recall@10": 0.9556,
       "mrr@10": 0.6921,
-      "latency_p50_ms": 3.1,
-      "latency_p95_ms": 4.1,
+      "latency_p50_ms": 3.7,
+      "latency_p95_ms": 5.6,
       "n": 45
     },
     "hybrid": {
@@ -43,8 +43,8 @@
       "recall@5": 0.8667,
       "recall@10": 0.9778,
       "mrr@10": 0.7071,
-      "latency_p50_ms": 14.2,
-      "latency_p95_ms": 17.0,
+      "latency_p50_ms": 13.7,
+      "latency_p95_ms": 16.4,
       "n": 45
     },
     "hybrid_rerank": {
@@ -58,8 +58,8 @@
       "recall@5": 0.9556,
       "recall@10": 1.0,
       "mrr@10": 0.8034,
-      "latency_p50_ms": 1218.1,
-      "latency_p95_ms": 1450.6,
+      "latency_p50_ms": 1395.5,
+      "latency_p95_ms": 1535.9,
       "n": 45
     },
     "confidence_gate": {
@@ -1012,6 +1012,1022 @@
       "doc_rank": 1,
       "passage_rank": 5,
       "top_source": "k8s/html/security/rbac-good-practices.html"
+    }
+  ],
+  "answer": {
+    "faithfulness": 1.0,
+    "citation_accuracy": 0.9889,
+    "answer_relevance": 0.9889,
+    "answer_correctness": 0.9833,
+    "answer_rate": 1.0,
+    "unanswerable_refusal_rate": 1.0,
+    "retry_rate": 0.0196,
+    "latency_p50_ms": 2864.2,
+    "latency_p95_ms": 4073.1,
+    "cost_per_query_usd": 0.000343,
+    "judge_tokens": {
+      "input": 132141,
+      "output": 4335
+    },
+    "provider": "anthropic/claude-haiku-5-5",
+    "n": 51
+  },
+  "answer_per_question": [
+    {
+      "id": "q01",
+      "answerable": true,
+      "refused": false,
+      "refusal_reason": null,
+      "attempts": 1,
+      "latency_ms": 4073.1202500028303,
+      "usage": {
+        "input_tokens": 1949,
+        "output_tokens": 68,
+        "cache_read_tokens": 0
+      },
+      "answer": "The data stored in a ConfigMap cannot exceed 1 MiB. [configmap-07b5e1]",
+      "n_claims": 1,
+      "pipeline_citation_pass_rate": 1.0,
+      "faithfulness": 1.0,
+      "citation_accuracy": 1.0,
+      "relevance": 1.0,
+      "correctness": 1.0
+    },
+    {
+      "id": "q02",
+      "answerable": true,
+      "refused": false,
+      "refusal_reason": null,
+      "attempts": 1,
+      "latency_ms": 2605.7666670021717,
+      "usage": {
+        "input_tokens": 2795,
+        "output_tokens": 64,
+        "cache_read_tokens": 0
+      },
+      "answer": "Individual Secrets are limited to 1MiB in size. [secret-ca4cb0]",
+      "n_claims": 1,
+      "pipeline_citation_pass_rate": 1.0,
+      "faithfulness": 1.0,
+      "citation_accuracy": 1.0,
+      "relevance": 1.0,
+      "correctness": 1.0
+    },
+    {
+      "id": "q03",
+      "answerable": true,
+      "refused": false,
+      "refusal_reason": null,
+      "attempts": 1,
+      "latency_ms": 2841.2594170004013,
+      "usage": {
+        "input_tokens": 2629,
+        "output_tokens": 122,
+        "cache_read_tokens": 0
+      },
+      "answer": "By default, all deletes are graceful within 30 seconds. [pod-termination-57bc70] The default terminationGracePeriodSeconds setting is 30 seconds. [pod-termination-ca6c8a]",
+      "n_claims": 2,
+      "pipeline_citation_pass_rate": 1.0,
+      "faithfulness": 1.0,
+      "citation_accuracy": 1.0,
+      "relevance": 1.0,
+      "correctness": 1.0
+    },
+    {
+      "id": "q04",
+      "answerable": true,
+      "refused": false,
+      "refusal_reason": null,
+      "attempts": 1,
+      "latency_ms": 3033.8947499985807,
+      "usage": {
+        "input_tokens": 2762,
+        "output_tokens": 156,
+        "cache_read_tokens": 0
+      },
+      "answer": "By default, a Deployment rolling update allows up to 25% of the desired Pods to be unavailable (maxUnavailable). [deployment-17192a][management-fea294] By default, a Deployment rolling update allows up to 25% extra Pods above the desired count (maxSurge). [management-fea294][deployment-dccb1e]",
+      "n_claims": 2,
+      "pipeline_citation_pass_rate": 1.0,
+      "faithfulness": 1.0,
+      "citation_accuracy": 1.0,
+      "relevance": 1.0,
+      "correctness": 1.0
+    },
+    {
+      "id": "q05",
+      "answerable": true,
+      "refused": false,
+      "refusal_reason": null,
+      "attempts": 1,
+      "latency_ms": 3204.314875001728,
+      "usage": {
+        "input_tokens": 2345,
+        "output_tokens": 234,
+        "cache_read_tokens": 0
+      },
+      "answer": "StatefulSets are valuable for applications that require stable, unique network identifiers. [statefulset-701b2d] StatefulSets are also valuable for applications that require stable, persistent storage, ordered graceful deployment and scaling, or ordered automated rolling updates. [statefulset-701b2d] If an application does not require stable identifiers or ordered deployment, deletion, or scaling, a workload object providing stateless replicas such as a Deployment or ReplicaSet may be better suited. [statefulset-701b2d]",
+      "n_claims": 3,
+      "pipeline_citation_pass_rate": 1.0,
+      "faithfulness": 1.0,
+      "citation_accuracy": 1.0,
+      "relevance": 1.0,
+      "correctness": 1.0
+    },
+    {
+      "id": "q06",
+      "answerable": true,
+      "refused": false,
+      "refusal_reason": null,
+      "attempts": 1,
+      "latency_ms": 2937.711541999306,
+      "usage": {
+        "input_tokens": 2578,
+        "output_tokens": 184,
+        "cache_read_tokens": 0
+      },
+      "answer": "A DaemonSet ensures that all (or some) Nodes run a copy of a Pod. [daemonset-31f921] As nodes are added to the cluster, Pods are added to them, and as nodes are removed, those Pods are garbage collected. [daemonset-31f921] The DaemonSet controller creates a Pod for each eligible node. [daemonset-92d708]",
+      "n_claims": 3,
+      "pipeline_citation_pass_rate": 1.0,
+      "faithfulness": 1.0,
+      "citation_accuracy": 1.0,
+      "relevance": 1.0,
+      "correctness": 1.0
+    },
+    {
+      "id": "q07",
+      "answerable": true,
+      "refused": false,
+      "refusal_reason": null,
+      "attempts": 1,
+      "latency_ms": 2864.1756670003815,
+      "usage": {
+        "input_tokens": 3593,
+        "output_tokens": 81,
+        "cache_read_tokens": 0
+      },
+      "answer": "By default, .spec.backoffLimit is set to 6, so a Job retries failed Pods 6 times before it is considered failed. [job-34a248]",
+      "n_claims": 1,
+      "pipeline_citation_pass_rate": 1.0,
+      "faithfulness": 1.0,
+      "citation_accuracy": 1.0,
+      "relevance": 1.0,
+      "correctness": 1.0
+    },
+    {
+      "id": "q08",
+      "answerable": true,
+      "refused": false,
+      "refusal_reason": null,
+      "attempts": 1,
+      "latency_ms": 3524.4387919992732,
+      "usage": {
+        "input_tokens": 2920,
+        "output_tokens": 276,
+        "cache_read_tokens": 0
+      },
+      "answer": "Finished Jobs can be cleaned up automatically by setting the .spec.ttlSecondsAfterFinished field of a Job. [job-5f619d][ttlafterfinished-b7bbb2] The TTL-after-finished controller deletes a finished Job, either Complete or Failed, cascadingly once its TTL has expired, including its dependent objects such as Pods. [ttlafterfinished-b7bbb2][job-5f619d] Jobs managed by a higher-level controller such as CronJobs can be cleaned up by that controller based on its capacity-based cleanup policy. [job-01ff97][cron-jobs-464b80]",
+      "n_claims": 3,
+      "pipeline_citation_pass_rate": 1.0,
+      "faithfulness": 1.0,
+      "citation_accuracy": 1.0,
+      "relevance": 1.0,
+      "correctness": 1.0
+    },
+    {
+      "id": "q09",
+      "answerable": true,
+      "refused": false,
+      "refusal_reason": null,
+      "attempts": 1,
+      "latency_ms": 2833.345166996878,
+      "usage": {
+        "input_tokens": 2852,
+        "output_tokens": 203,
+        "cache_read_tokens": 0
+      },
+      "answer": "The concurrencyPolicy field controls whether a CronJob may start a new run while the previous one is still running. [cron-jobs-084456] With the default Allow policy, the CronJob allows concurrently running Jobs. [cron-jobs-084456] With Forbid, the CronJob skips the new Job run if the previous run has not finished, and with Replace it replaces the currently running Job with a new one. [cron-jobs-084456]",
+      "n_claims": 3,
+      "pipeline_citation_pass_rate": 1.0,
+      "faithfulness": 1.0,
+      "citation_accuracy": 1.0,
+      "relevance": 1.0,
+      "correctness": 1.0
+    },
+    {
+      "id": "q10",
+      "answerable": true,
+      "refused": false,
+      "refusal_reason": null,
+      "attempts": 1,
+      "latency_ms": 3297.976583999116,
+      "usage": {
+        "input_tokens": 2729,
+        "output_tokens": 277,
+        "cache_read_tokens": 0
+      },
+      "answer": "Init containers are exactly like regular containers, except that they always run to completion. [init-containers-650912] Each init container must complete successfully before the next one starts, and the app containers start only after all init containers have completed. [init-containers-650912][init-containers-5b1121] Regular init containers do not support the lifecycle, livenessProbe, readinessProbe, or startupProbe fields. [init-containers-5b1121] Init containers do not run alongside the main containers, unlike sidecar containers, which support probes and keep running for the Pod's lifetime. [init-containers-377702][sidecar-containers-ff672e]",
+      "n_claims": 4,
+      "pipeline_citation_pass_rate": 1.0,
+      "faithfulness": 1.0,
+      "citation_accuracy": 1.0,
+      "relevance": 1.0,
+      "correctness": 1.0
+    },
+    {
+      "id": "q11",
+      "answerable": true,
+      "refused": false,
+      "refusal_reason": null,
+      "attempts": 1,
+      "latency_ms": 4071.706541999447,
+      "usage": {
+        "input_tokens": 2021,
+        "output_tokens": 425,
+        "cache_read_tokens": 0
+      },
+      "answer": "A sidecar container is an init container with an Always restart policy. [pod-termination-11d221] Init containers are specified in the Pod specification alongside the containers array, which describes app containers. [init-containers-ebf5a9]",
+      "n_claims": 2,
+      "pipeline_citation_pass_rate": 1.0,
+      "faithfulness": 1.0,
+      "citation_accuracy": 1.0,
+      "relevance": 0.75,
+      "correctness": 0.75
+    },
+    {
+      "id": "q12",
+      "answerable": true,
+      "refused": false,
+      "refusal_reason": null,
+      "attempts": 1,
+      "latency_ms": 3241.5081670005748,
+      "usage": {
+        "input_tokens": 2470,
+        "output_tokens": 183,
+        "cache_read_tokens": 0
+      },
+      "answer": "When a Node runs out of resources, Kubernetes first evicts BestEffort Pods running on that Node. [pod-qos-042c72] Burstable Pods are evicted only after all BestEffort Pods are evicted. [pod-qos-c23ae0] Guaranteed Pods are evicted last, after Burstable Pods. [pod-qos-042c72]",
+      "n_claims": 3,
+      "pipeline_citation_pass_rate": 1.0,
+      "faithfulness": 1.0,
+      "citation_accuracy": 1.0,
+      "relevance": 1.0,
+      "correctness": 1.0
+    },
+    {
+      "id": "q13",
+      "answerable": true,
+      "refused": false,
+      "refusal_reason": null,
+      "attempts": 1,
+      "latency_ms": 3164.99066599863,
+      "usage": {
+        "input_tokens": 3289,
+        "output_tokens": 261,
+        "cache_read_tokens": 0
+      },
+      "answer": "You can create a PodDisruptionBudget (PDB) for each application to limit the number of its Pods that are down simultaneously from voluntary disruptions. [disruptions-96cb53] Tools such as kubectl drain respect PodDisruptionBudgets because they use the Eviction API, which will refuse evictions that would violate the PDB. [disruptions-96cb53][disruptions-4d8f0f] A PDB specifies how many replicas the application can tolerate having relative to how many it is intended to have, and it selects pods using a label selector matching the application's controller. [disruptions-4d8f0f]",
+      "n_claims": 3,
+      "pipeline_citation_pass_rate": 1.0,
+      "faithfulness": 1.0,
+      "citation_accuracy": 1.0,
+      "relevance": 1.0,
+      "correctness": 1.0
+    },
+    {
+      "id": "q14",
+      "answerable": true,
+      "refused": false,
+      "refusal_reason": null,
+      "attempts": 1,
+      "latency_ms": 2709.435625001788,
+      "usage": {
+        "input_tokens": 2239,
+        "output_tokens": 146,
+        "cache_read_tokens": 0
+      },
+      "answer": "Static Pods are managed directly by the kubelet daemon on a specific node, without the API server observing them. [static-pods-303e61] The kubelet on each node loads and directly manages static Pod manifests, and the API server doesn't manage these static Pods. [api-server-bypass-risks-c1d560]",
+      "n_claims": 2,
+      "pipeline_citation_pass_rate": 1.0,
+      "faithfulness": 1.0,
+      "citation_accuracy": 1.0,
+      "relevance": 1.0,
+      "correctness": 1.0
+    },
+    {
+      "id": "q15",
+      "answerable": true,
+      "refused": false,
+      "refusal_reason": null,
+      "attempts": 1,
+      "latency_ms": 3295.5957500016666,
+      "usage": {
+        "input_tokens": 2419,
+        "output_tokens": 223,
+        "cache_read_tokens": 0
+      },
+      "answer": "Ephemeral containers are a special type of container that runs temporarily in an existing pod to accomplish user-initiated actions such as troubleshooting. [ephemeral-containers-a1adf9] They are useful for interactive troubleshooting when kubectl exec is insufficient, such as when a container has crashed or its image does not include debugging utilities. [ephemeral-containers-79f4bf] They are used to inspect services rather than to build applications. [ephemeral-containers-a1adf9]",
+      "n_claims": 3,
+      "pipeline_citation_pass_rate": 1.0,
+      "faithfulness": 1.0,
+      "citation_accuracy": 1.0,
+      "relevance": 1.0,
+      "correctness": 1.0
+    },
+    {
+      "id": "q16",
+      "answerable": true,
+      "refused": false,
+      "refusal_reason": null,
+      "attempts": 1,
+      "latency_ms": 2944.282166998164,
+      "usage": {
+        "input_tokens": 4178,
+        "output_tokens": 152,
+        "cache_read_tokens": 0
+      },
+      "answer": "By default, the HorizontalPodAutoscaler control loop runs every 15 seconds. [horizontal-pod-autoscale-25f841] The interval is set by the --horizontal-pod-autoscaler-sync-period parameter to kube-controller-manager. [horizontal-pod-autoscale-25f841]",
+      "n_claims": 2,
+      "pipeline_citation_pass_rate": 1.0,
+      "faithfulness": 1.0,
+      "citation_accuracy": 1.0,
+      "relevance": 1.0,
+      "correctness": 1.0
+    },
+    {
+      "id": "q17",
+      "answerable": true,
+      "refused": false,
+      "refusal_reason": null,
+      "attempts": 1,
+      "latency_ms": 2869.8932500010415,
+      "usage": {
+        "input_tokens": 3103,
+        "output_tokens": 193,
+        "cache_read_tokens": 0
+      },
+      "answer": "A VerticalPodAutoscaler automatically adjusts the resource requests and limits of its target workload resource, such as a Deployment or StatefulSet, to match actual usage. [vertical-pod-autoscale-3cca1d] The updater can change Pod resources either by evicting Pods so they are recreated with new resource requests, or by updating Pod resources in place when the cluster supports it. [vertical-pod-autoscale-eacd18]",
+      "n_claims": 2,
+      "pipeline_citation_pass_rate": 1.0,
+      "faithfulness": 1.0,
+      "citation_accuracy": 1.0,
+      "relevance": 1.0,
+      "correctness": 1.0
+    },
+    {
+      "id": "q18",
+      "answerable": true,
+      "refused": false,
+      "refusal_reason": null,
+      "attempts": 1,
+      "latency_ms": 2621.7160840024007,
+      "usage": {
+        "input_tokens": 2066,
+        "output_tokens": 205,
+        "cache_read_tokens": 0
+      },
+      "answer": "A ReplicaSet's purpose is to maintain a stable set of replica Pods running at any given time. [replicaset-8734d6] A ReplicaSet is often used to guarantee the availability of a specified number of identical Pods. [replicaset-8734d6] A ReplicaSet replaces Pods that are deleted or terminated for any reason, such as node failure or disruptive node maintenance. [replicaset-2c1b6f]",
+      "n_claims": 3,
+      "pipeline_citation_pass_rate": 1.0,
+      "faithfulness": 1.0,
+      "citation_accuracy": 1.0,
+      "relevance": 1.0,
+      "correctness": 1.0
+    },
+    {
+      "id": "q19",
+      "answerable": true,
+      "refused": false,
+      "refusal_reason": null,
+      "attempts": 1,
+      "latency_ms": 3084.483333997923,
+      "usage": {
+        "input_tokens": 2977,
+        "output_tokens": 259,
+        "cache_read_tokens": 0
+      },
+      "answer": "A Pod starts in the Pending phase. [pod-lifecycle-799c18] A Pod moves to Running if at least one of its primary containers starts OK. [pod-lifecycle-799c18] A Pod then moves to either Succeeded or Failed, depending on whether any container in the Pod terminated in failure. [pod-lifecycle-799c18] The Pod phase values also include Unknown, which applies when the state of the Pod cannot be obtained. [pod-lifecycle-f3deae][pod-lifecycle-a1f4dd]",
+      "n_claims": 4,
+      "pipeline_citation_pass_rate": 1.0,
+      "faithfulness": 1.0,
+      "citation_accuracy": 0.75,
+      "relevance": 1.0,
+      "correctness": 1.0
+    },
+    {
+      "id": "q20",
+      "answerable": true,
+      "refused": false,
+      "refusal_reason": null,
+      "attempts": 1,
+      "latency_ms": 2859.497999997984,
+      "usage": {
+        "input_tokens": 2976,
+        "output_tokens": 86,
+        "cache_read_tokens": 0
+      },
+      "answer": "By default, the control plane allocates NodePort ports from the range specified by the --service-node-port-range flag, which defaults to 30000-32767. [service-b844d3]",
+      "n_claims": 1,
+      "pipeline_citation_pass_rate": 1.0,
+      "faithfulness": 1.0,
+      "citation_accuracy": 1.0,
+      "relevance": 1.0,
+      "correctness": 1.0
+    },
+    {
+      "id": "q21",
+      "answerable": true,
+      "refused": false,
+      "refusal_reason": null,
+      "attempts": 1,
+      "latency_ms": 3379.833333998249,
+      "usage": {
+        "input_tokens": 2819,
+        "output_tokens": 195,
+        "cache_read_tokens": 0
+      },
+      "answer": "If you define a Service with .spec.clusterIP set to \"None\", Kubernetes does not assign an IP address. [service-ce0810] Such Services are called headless Services. [service-ce0810] Headless Services (without a cluster IP) are assigned DNS A and/or AAAA records that resolve to the set of IPs of all of the Pods selected by the Service. [dns-pod-service-b25660]",
+      "n_claims": 3,
+      "pipeline_citation_pass_rate": 1.0,
+      "faithfulness": 1.0,
+      "citation_accuracy": 1.0,
+      "relevance": 1.0,
+      "correctness": 1.0
+    },
+    {
+      "id": "q22",
+      "answerable": true,
+      "refused": false,
+      "refusal_reason": null,
+      "attempts": 2,
+      "latency_ms": 9059.863667000172,
+      "usage": {
+        "input_tokens": 5698,
+        "output_tokens": 1353,
+        "cache_read_tokens": 0
+      },
+      "answer": "A pod that no NetworkPolicy selects is not isolated for ingress. [network-policies-468355] A pod is isolated for ingress only when a NetworkPolicy both selects it and has Ingress in its policyTypes. [network-policies-468355]",
+      "n_claims": 2,
+      "pipeline_citation_pass_rate": 1.0,
+      "faithfulness": 1.0,
+      "citation_accuracy": 1.0,
+      "relevance": 1.0,
+      "correctness": 0.75
+    },
+    {
+      "id": "q23",
+      "answerable": true,
+      "refused": false,
+      "refusal_reason": null,
+      "attempts": 1,
+      "latency_ms": 3003.272083999036,
+      "usage": {
+        "input_tokens": 2449,
+        "output_tokens": 118,
+        "cache_read_tokens": 0
+      },
+      "answer": "The Ingress API is no longer being developed. [ingress-626b69] The Ingress API has been frozen and will have no further changes or updates made to it. [ingress-controllers-b37bd5][ingress-626b69]",
+      "n_claims": 2,
+      "pipeline_citation_pass_rate": 1.0,
+      "faithfulness": 1.0,
+      "citation_accuracy": 1.0,
+      "relevance": 1.0,
+      "correctness": 1.0
+    },
+    {
+      "id": "q24",
+      "answerable": true,
+      "refused": false,
+      "refusal_reason": null,
+      "attempts": 1,
+      "latency_ms": 3014.0029169997433,
+      "usage": {
+        "input_tokens": 2682,
+        "output_tokens": 145,
+        "cache_read_tokens": 0
+      },
+      "answer": "A normal (not headless) Service is assigned DNS A and/or AAAA records with a name of the form my-svc.my-namespace.svc.cluster-domain.example. [dns-pod-service-b25660] This name resolves to the cluster IP of the Service. [dns-pod-service-b25660]",
+      "n_claims": 2,
+      "pipeline_citation_pass_rate": 1.0,
+      "faithfulness": 1.0,
+      "citation_accuracy": 1.0,
+      "relevance": 1.0,
+      "correctness": 1.0
+    },
+    {
+      "id": "q25",
+      "answerable": true,
+      "refused": false,
+      "refusal_reason": null,
+      "attempts": 1,
+      "latency_ms": 2994.770332999906,
+      "usage": {
+        "input_tokens": 2579,
+        "output_tokens": 233,
+        "cache_read_tokens": 0
+      },
+      "answer": "You can enable the internal-only traffic policy for a Service by setting its .spec.internalTrafficPolicy to Local. [service-traffic-policy-861eea] Setting internalTrafficPolicy to Local tells kube-proxy to only use node local endpoints for cluster internal traffic. [service-traffic-policy-861eea][service-traffic-policy-c74169] Internal traffic policy routes internal traffic only to endpoints within the node the traffic originated from. [service-traffic-policy-4efde7]",
+      "n_claims": 3,
+      "pipeline_citation_pass_rate": 1.0,
+      "faithfulness": 1.0,
+      "citation_accuracy": 1.0,
+      "relevance": 1.0,
+      "correctness": 1.0
+    },
+    {
+      "id": "q26",
+      "answerable": true,
+      "refused": false,
+      "refusal_reason": null,
+      "attempts": 1,
+      "latency_ms": 2868.7943749973783,
+      "usage": {
+        "input_tokens": 2810,
+        "output_tokens": 84,
+        "cache_read_tokens": 0
+      },
+      "answer": "The four stable Gateway API kinds are GatewayClass, Gateway, HTTPRoute, and GRPCRoute. [gateway-0a8624]",
+      "n_claims": 1,
+      "pipeline_citation_pass_rate": 1.0,
+      "faithfulness": 1.0,
+      "citation_accuracy": 1.0,
+      "relevance": 1.0,
+      "correctness": 1.0
+    },
+    {
+      "id": "q27",
+      "answerable": true,
+      "refused": false,
+      "refusal_reason": null,
+      "attempts": 1,
+      "latency_ms": 2548.868333000428,
+      "usage": {
+        "input_tokens": 2650,
+        "output_tokens": 146,
+        "cache_read_tokens": 0
+      },
+      "answer": "By default, the control plane creates and manages EndpointSlices to have no more than 100 endpoints each. [endpoint-slices-ea2518] By default, Kubernetes makes a new EndpointSlice once the existing EndpointSlices all contain at least 100 endpoints. [service-d528e3]",
+      "n_claims": 2,
+      "pipeline_citation_pass_rate": 1.0,
+      "faithfulness": 1.0,
+      "citation_accuracy": 1.0,
+      "relevance": 1.0,
+      "correctness": 1.0
+    },
+    {
+      "id": "q28",
+      "answerable": true,
+      "refused": false,
+      "refusal_reason": null,
+      "attempts": 1,
+      "latency_ms": 2731.612708001194,
+      "usage": {
+        "input_tokens": 3164,
+        "output_tokens": 149,
+        "cache_read_tokens": 0
+      },
+      "answer": "The ReadWriteOncePod access mode restricts a volume to a single Pod. [persistent-volumes-2698d1][persistent-volumes-1e7269] With ReadWriteOncePod, only one pod across the whole cluster can read the PVC or write to it. [persistent-volumes-1e7269]",
+      "n_claims": 2,
+      "pipeline_citation_pass_rate": 1.0,
+      "faithfulness": 1.0,
+      "citation_accuracy": 1.0,
+      "relevance": 1.0,
+      "correctness": 1.0
+    },
+    {
+      "id": "q29",
+      "answerable": true,
+      "refused": false,
+      "refusal_reason": null,
+      "attempts": 1,
+      "latency_ms": 3031.220166998537,
+      "usage": {
+        "input_tokens": 2356,
+        "output_tokens": 236,
+        "cache_read_tokens": 0
+      },
+      "answer": "With the Retain reclaim policy, the PersistentVolume still exists after its PersistentVolumeClaim is deleted and is considered \"released\". [persistent-volumes-38e794] The released volume is not available for another claim because the previous claimant's data remains on the volume. [persistent-volumes-38e794] An administrator must reclaim the volume manually, which includes deleting the PersistentVolume, cleaning up the data on the associated storage asset, and optionally deleting that storage asset. [persistent-volumes-38e794]",
+      "n_claims": 3,
+      "pipeline_citation_pass_rate": 1.0,
+      "faithfulness": 1.0,
+      "citation_accuracy": 1.0,
+      "relevance": 1.0,
+      "correctness": 1.0
+    },
+    {
+      "id": "q30",
+      "answerable": true,
+      "refused": false,
+      "refusal_reason": null,
+      "attempts": 1,
+      "latency_ms": 2824.7139590021106,
+      "usage": {
+        "input_tokens": 3118,
+        "output_tokens": 259,
+        "cache_read_tokens": 0
+      },
+      "answer": "You can use the WaitForFirstConsumer volume binding mode to delay volume binding and dynamic provisioning until a Pod using the PersistentVolumeClaim is created. [storage-classes-ccb5c5] The WaitForFirstConsumer mode lets PersistentVolumes be selected or provisioned according to the Pod's scheduling constraints. [storage-classes-ccb5c5] Do not use nodeName in the Pod spec when using WaitForFirstConsumer, because the scheduler is bypassed and the PVC remains pending. [storage-classes-ccb5c5]",
+      "n_claims": 3,
+      "pipeline_citation_pass_rate": 1.0,
+      "faithfulness": 1.0,
+      "citation_accuracy": 1.0,
+      "relevance": 1.0,
+      "correctness": 1.0
+    },
+    {
+      "id": "q31",
+      "answerable": true,
+      "refused": false,
+      "refusal_reason": null,
+      "attempts": 1,
+      "latency_ms": 2932.530375001079,
+      "usage": {
+        "input_tokens": 2797,
+        "output_tokens": 252,
+        "cache_read_tokens": 0
+      },
+      "answer": "A VolumeSnapshotContent is a snapshot taken from a volume in the cluster that has been provisioned by an administrator, and it is a cluster resource just like a PersistentVolume. [volume-snapshots-c1a7e9] A VolumeSnapshot is a request for a snapshot of a volume by a user, similar to a PersistentVolumeClaim. [volume-snapshots-c1a7e9] VolumeSnapshotContents are resources in the cluster, and VolumeSnapshots are requests for those resources. [volume-snapshots-fe2d34]",
+      "n_claims": 3,
+      "pipeline_citation_pass_rate": 1.0,
+      "faithfulness": 1.0,
+      "citation_accuracy": 1.0,
+      "relevance": 1.0,
+      "correctness": 1.0
+    },
+    {
+      "id": "q32",
+      "answerable": true,
+      "refused": false,
+      "refusal_reason": null,
+      "attempts": 1,
+      "latency_ms": 2715.7909169982304,
+      "usage": {
+        "input_tokens": 3082,
+        "output_tokens": 144,
+        "cache_read_tokens": 0
+      },
+      "answer": "A projected volume maps several existing volume sources into the same directory. [projected-volumes-021ae2] The volume sources that can be projected include secret, downwardAPI, configMap, serviceAccountToken, clusterTrustBundle, and podCertificate. [projected-volumes-021ae2]",
+      "n_claims": 2,
+      "pipeline_citation_pass_rate": 1.0,
+      "faithfulness": 1.0,
+      "citation_accuracy": 1.0,
+      "relevance": 1.0,
+      "correctness": 1.0
+    },
+    {
+      "id": "q33",
+      "answerable": true,
+      "refused": false,
+      "refusal_reason": null,
+      "attempts": 1,
+      "latency_ms": 2478.900915997656,
+      "usage": {
+        "input_tokens": 2993,
+        "output_tokens": 64,
+        "cache_read_tokens": 0
+      },
+      "answer": "The API currently supports two types of label selectors: equality-based and set-based. [labels-393e8b]",
+      "n_claims": 1,
+      "pipeline_citation_pass_rate": 1.0,
+      "faithfulness": 1.0,
+      "citation_accuracy": 1.0,
+      "relevance": 1.0,
+      "correctness": 1.0
+    },
+    {
+      "id": "q34",
+      "answerable": true,
+      "refused": false,
+      "refusal_reason": null,
+      "attempts": 1,
+      "latency_ms": 2441.2099159999343,
+      "usage": {
+        "input_tokens": 2642,
+        "output_tokens": 66,
+        "cache_read_tokens": 0
+      },
+      "answer": "A name that must be a DNS subdomain name can contain no more than 253 characters. [names-2f7152]",
+      "n_claims": 1,
+      "pipeline_citation_pass_rate": 1.0,
+      "faithfulness": 1.0,
+      "citation_accuracy": 1.0,
+      "relevance": 1.0,
+      "correctness": 1.0
+    },
+    {
+      "id": "q35",
+      "answerable": true,
+      "refused": false,
+      "refusal_reason": null,
+      "attempts": 1,
+      "latency_ms": 2268.5482919987408,
+      "usage": {
+        "input_tokens": 2155,
+        "output_tokens": 92,
+        "cache_read_tokens": 0
+      },
+      "answer": "Kubernetes starts with four initial namespaces: default, kube-node-lease, kube-public, and kube-system. [namespaces-2699d2][namespaces-7eadc9]",
+      "n_claims": 1,
+      "pipeline_citation_pass_rate": 1.0,
+      "faithfulness": 1.0,
+      "citation_accuracy": 1.0,
+      "relevance": 1.0,
+      "correctness": 1.0
+    },
+    {
+      "id": "q36",
+      "answerable": true,
+      "refused": false,
+      "refusal_reason": null,
+      "attempts": 1,
+      "latency_ms": 5525.761041000806,
+      "usage": {
+        "input_tokens": 2728,
+        "output_tokens": 295,
+        "cache_read_tokens": 0
+      },
+      "answer": "When you delete an object that has finalizers, the API server adds a metadata.deletionTimestamp field and returns a 202 status code. [finalizers-335c72] The object is not removed until all items are removed from its metadata.finalizers field. [finalizers-335c72] The controller managing each finalizer attempts to satisfy its requirements and removes that key from the finalizers field each time its condition is satisfied; when the finalizers field is empty, the object is automatically deleted. [finalizers-335c72] Once deletion is requested, you can remove existing finalizers but cannot add new ones, and the deletionTimestamp cannot be modified. [finalizers-b56b52]",
+      "n_claims": 4,
+      "pipeline_citation_pass_rate": 1.0,
+      "faithfulness": 1.0,
+      "citation_accuracy": 0.75,
+      "relevance": 1.0,
+      "correctness": 1.0
+    },
+    {
+      "id": "q37",
+      "answerable": true,
+      "refused": false,
+      "refusal_reason": null,
+      "attempts": 1,
+      "latency_ms": 2888.2800829996995,
+      "usage": {
+        "input_tokens": 2784,
+        "output_tokens": 221,
+        "cache_read_tokens": 0
+      },
+      "answer": "Labels are key/value pairs used to specify identifying attributes of objects that are meaningful to users, and they can be used to select and organize subsets of objects. [labels-9a9872] Annotations are key/value maps used to attach arbitrary non-identifying metadata to objects, and they are not used to identify or select objects. [annotations-28dd41] Annotations can hold metadata that is small or large, structured or unstructured, and can include characters not permitted by labels. [annotations-28dd41]",
+      "n_claims": 3,
+      "pipeline_citation_pass_rate": 1.0,
+      "faithfulness": 1.0,
+      "citation_accuracy": 1.0,
+      "relevance": 1.0,
+      "correctness": 1.0
+    },
+    {
+      "id": "q38",
+      "answerable": true,
+      "refused": false,
+      "refusal_reason": null,
+      "attempts": 1,
+      "latency_ms": 2939.836416997423,
+      "usage": {
+        "input_tokens": 3036,
+        "output_tokens": 320,
+        "cache_read_tokens": 0
+      },
+      "answer": "When a container exceeds its memory limit, the Linux kernel out-of-memory subsystem activates and typically stops one of the processes in the container that tried to allocate memory. [manage-resources-contain-d9d27b] Memory limits are enforced reactively, so a container may use more memory than its limit, but it may get killed when the kernel detects memory pressure. [manage-resources-contain-06f452] CPU limits are enforced by CPU throttling, and the kernel restricts the container's CPU access as it approaches its limit, so a container may not use more CPU than its limit. [manage-resources-contain-5f0753] Container runtimes don't terminate Pods or containers for excessive CPU usage. [manage-resources-contain-fa0920]",
+      "n_claims": 4,
+      "pipeline_citation_pass_rate": 1.0,
+      "faithfulness": 1.0,
+      "citation_accuracy": 1.0,
+      "relevance": 1.0,
+      "correctness": 1.0
+    },
+    {
+      "id": "q39",
+      "answerable": true,
+      "refused": false,
+      "refusal_reason": null,
+      "attempts": 1,
+      "latency_ms": 2479.0579580003396,
+      "usage": {
+        "input_tokens": 2797,
+        "output_tokens": 119,
+        "cache_read_tokens": 0
+      },
+      "answer": "The IfNotPresent image pull policy means the image is pulled only if it is not already present locally. [images-a68886] With IfNotPresent, the kubelet skips pulling an image if it already exists. [images-5216cb]",
+      "n_claims": 2,
+      "pipeline_citation_pass_rate": 1.0,
+      "faithfulness": 1.0,
+      "citation_accuracy": 1.0,
+      "relevance": 1.0,
+      "correctness": 1.0
+    },
+    {
+      "id": "q40",
+      "answerable": true,
+      "refused": false,
+      "refusal_reason": null,
+      "attempts": 1,
+      "latency_ms": 2986.2291249992268,
+      "usage": {
+        "input_tokens": 3009,
+        "output_tokens": 225,
+        "cache_read_tokens": 0
+      },
+      "answer": "The PostStart hook is executed immediately after a container is created. [container-lifecycle-hook-420a15] The PostStart hook handler call is initiated when a container is created, so the container ENTRYPOINT and the PostStart hook are triggered simultaneously. [container-lifecycle-hook-ecb0fd] The PostStart hook runs concurrently with the container's ENTRYPOINT, so it may run before, during, or after the main process starts. [container-lifecycle-hook-420a15]",
+      "n_claims": 3,
+      "pipeline_citation_pass_rate": 1.0,
+      "faithfulness": 1.0,
+      "citation_accuracy": 1.0,
+      "relevance": 1.0,
+      "correctness": 1.0
+    },
+    {
+      "id": "q41",
+      "answerable": true,
+      "refused": false,
+      "refusal_reason": null,
+      "attempts": 1,
+      "latency_ms": 2769.845457998599,
+      "usage": {
+        "input_tokens": 2811,
+        "output_tokens": 255,
+        "cache_read_tokens": 0
+      },
+      "answer": "The three Pod Security Standards levels are privileged, baseline, and restricted. [pod-security-admission-4072aa][pod-security-standards-a1b747] The privileged level is the unrestricted policy with the widest possible level of permissions. [pod-security-standards-a1b747] The baseline level is a minimally restrictive policy that prevents known privilege escalations. [pod-security-standards-a1b747] The restricted level is a heavily restricted policy that follows current Pod hardening best practices. [pod-security-standards-a1b747]",
+      "n_claims": 4,
+      "pipeline_citation_pass_rate": 1.0,
+      "faithfulness": 1.0,
+      "citation_accuracy": 1.0,
+      "relevance": 1.0,
+      "correctness": 1.0
+    },
+    {
+      "id": "q42",
+      "answerable": true,
+      "refused": false,
+      "refusal_reason": null,
+      "attempts": 1,
+      "latency_ms": 2731.393082998693,
+      "usage": {
+        "input_tokens": 2239,
+        "output_tokens": 248,
+        "cache_read_tokens": 0
+      },
+      "answer": "Pod Security Admission supports three modes: enforce, audit, and warn. [pod-security-admission-e3d205] In enforce mode, policy violations cause the pod to be rejected. [pod-security-admission-e3d205] In audit mode, policy violations add an audit annotation to the event recorded in the audit log but are otherwise allowed. [pod-security-admission-e3d205] In warn mode, policy violations trigger a user-facing warning but are otherwise allowed. [pod-security-admission-e3d205]",
+      "n_claims": 4,
+      "pipeline_citation_pass_rate": 1.0,
+      "faithfulness": 1.0,
+      "citation_accuracy": 1.0,
+      "relevance": 1.0,
+      "correctness": 1.0
+    },
+    {
+      "id": "q43",
+      "answerable": true,
+      "refused": false,
+      "refusal_reason": null,
+      "attempts": 1,
+      "latency_ms": 2356.1551669990877,
+      "usage": {
+        "input_tokens": 2340,
+        "output_tokens": 130,
+        "cache_read_tokens": 0
+      },
+      "answer": "By default, Secret objects are stored unencrypted in etcd. [secrets-good-practices-8c9896] Kubernetes Secrets are, by default, stored unencrypted in the API server's underlying data store (etcd). [secret-ee86c3]",
+      "n_claims": 2,
+      "pipeline_citation_pass_rate": 1.0,
+      "faithfulness": 1.0,
+      "citation_accuracy": 1.0,
+      "relevance": 1.0,
+      "correctness": 1.0
+    },
+    {
+      "id": "q44",
+      "answerable": true,
+      "refused": false,
+      "refusal_reason": null,
+      "attempts": 1,
+      "latency_ms": 2681.9996669983084,
+      "usage": {
+        "input_tokens": 2821,
+        "output_tokens": 224,
+        "cache_read_tokens": 0
+      },
+      "answer": "To prevent Kubernetes from automatically injecting credentials for a ServiceAccount, set the automountServiceAccountToken field in the Pod specification to false. [service-accounts-838df6] Setting automountServiceAccountToken to false can also be done within the ServiceAccount to apply throughout the namespace. [security-checklist-a9b739] Setting automountServiceAccountToken on a Pod overwrites the ServiceAccount setting. [rbac-good-practices-17b471]",
+      "n_claims": 3,
+      "pipeline_citation_pass_rate": 1.0,
+      "faithfulness": 1.0,
+      "citation_accuracy": 1.0,
+      "relevance": 1.0,
+      "correctness": 1.0
+    },
+    {
+      "id": "q45",
+      "answerable": true,
+      "refused": false,
+      "refusal_reason": null,
+      "attempts": 1,
+      "latency_ms": 2148.925249999593,
+      "usage": {
+        "input_tokens": 1951,
+        "output_tokens": 149,
+        "cache_read_tokens": 0
+      },
+      "answer": "Kubernetes RBAC is a key security control to ensure that cluster users and workloads have only the access to resources required to execute their roles. [rbac-good-practices-15820c] It is still considered best practice to follow least privilege principles and assign the minimum set of permissions. [rbac-good-practices-92b13a]",
+      "n_claims": 2,
+      "pipeline_citation_pass_rate": 1.0,
+      "faithfulness": 1.0,
+      "citation_accuracy": 1.0,
+      "relevance": 0.75,
+      "correctness": 0.75
+    },
+    {
+      "id": "u01",
+      "answerable": false,
+      "refused": true,
+      "refusal_reason": "retrieval confidence 0.22 below threshold",
+      "attempts": 0,
+      "latency_ms": 947.7622499980498,
+      "usage": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0
+      },
+      "answer": "I don't know. The documentation I have doesn't clearly answer that.",
+      "n_claims": 0,
+      "pipeline_citation_pass_rate": null
+    },
+    {
+      "id": "u02",
+      "answerable": false,
+      "refused": true,
+      "refusal_reason": "retrieval confidence 0.00 below threshold",
+      "attempts": 0,
+      "latency_ms": 1091.907292000542,
+      "usage": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0
+      },
+      "answer": "I don't know. The documentation I have doesn't clearly answer that.",
+      "n_claims": 0,
+      "pipeline_citation_pass_rate": null
+    },
+    {
+      "id": "u03",
+      "answerable": false,
+      "refused": true,
+      "refusal_reason": "retrieval confidence 0.05 below threshold",
+      "attempts": 0,
+      "latency_ms": 1115.894083999592,
+      "usage": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0
+      },
+      "answer": "I don't know. The documentation I have doesn't clearly answer that.",
+      "n_claims": 0,
+      "pipeline_citation_pass_rate": null
+    },
+    {
+      "id": "u04",
+      "answerable": false,
+      "refused": true,
+      "refusal_reason": "retrieval confidence 0.00 below threshold",
+      "attempts": 0,
+      "latency_ms": 1079.7472919985012,
+      "usage": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0
+      },
+      "answer": "I don't know. The documentation I have doesn't clearly answer that.",
+      "n_claims": 0,
+      "pipeline_citation_pass_rate": null
+    },
+    {
+      "id": "u05",
+      "answerable": false,
+      "refused": true,
+      "refusal_reason": "model judged context insufficient",
+      "attempts": 1,
+      "latency_ms": 2240.6038750013977,
+      "usage": {
+        "input_tokens": 1832,
+        "output_tokens": 17,
+        "cache_read_tokens": 0
+      },
+      "answer": "I don't know. The documentation I have doesn't clearly answer that.",
+      "n_claims": 0,
+      "pipeline_citation_pass_rate": null
+    },
+    {
+      "id": "u06",
+      "answerable": false,
+      "refused": true,
+      "refusal_reason": "retrieval confidence 0.01 below threshold",
+      "attempts": 0,
+      "latency_ms": 1004.7663339973951,
+      "usage": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cache_read_tokens": 0
+      },
+      "answer": "I don't know. The documentation I have doesn't clearly answer that.",
+      "n_claims": 0,
+      "pipeline_citation_pass_rate": null
     }
   ]
 }

@@ -9,3 +9,4 @@ __pycache__/
 eval/reports/report-*.json
 !eval/reports/baseline.json
 .DS_Store
+.claude/

@@ -12,6 +12,8 @@ measured on a golden dataset, and **CI fails any PR that makes them worse**.
 > The project ideas come from her video. The implementation, the extra features (contextual retrieval,
 > structured-output citations, MCP server, passage-level eval) and any mistakes are mine.
 
+![Ask My Docs UI: a cited answer with validated citations, confidence, latency and the retrieved chunks](docs/ui.png)
+
 ## What it does
 
 Real output (retrieval stage) for *"How many times will a Job retry failed pods by default?"*:
@@ -91,10 +93,36 @@ number that matters most**. Reranking moves it from 0.87 to 0.96.
 reranker probability < 0.30, and none of the 45 answerable ones are. The lowest-scoring answerable
 question scores 0.67. The LLM's own `answerable` flag handles the remaining out-of-scope question.
 
-**End-to-end answer quality** (LLM judge: faithfulness, citation accuracy, relevance, correctness,
-refusal rates, $/query). This needs an LLM key. Run `uv run python eval/run_eval.py`. The table is
-written to [`eval/reports/results.md`](eval/reports/results.md) and checked against
-[`eval_thresholds.yaml`](eval/eval_thresholds.yaml).
+**End-to-end answer quality.** All 51 questions are answered by `claude-haiku-5-5` and scored by an LLM judge:
+
+| Faithfulness | Citation accuracy | Relevance | Correctness | Answer rate | Out-of-scope refused | Retry rate | p50 | p95 | Cost / query |
+|---|---|---|---|---|---|---|---|---|---|
+| 1.000 | 0.989 | 0.989 | 0.983 | 1.000 (45/45) | 1.000 (6/6) | 2% | 2.9 s | 4.1 s | **$0.00034** |
+
+- *Faithfulness*: the share of claims supported by any retrieved chunk.
+- *Citation accuracy*: the share supported by the specific chunks the claim cites.
+- *Relevance* and *correctness*: 1–5 ratings rescaled to 0–1, with correctness judged against the reference answer.
+- *Cost*: answer generation only. The judge added about $0.015 for the whole run.
+
+### What worked, what didn't (failure cases)
+
+- **The lexical citation check is too lenient.** Two answers (q19 pod phases, q36 finalizers) passed the in-pipeline
+  check, but the judge found one claim in each citing a chunk that didn't support it. The claim was
+  true, but it was backed by a *different* retrieved chunk. Word overlap can't tell those apart.
+  `ASKDOCS_CITATION_CHECK=llm` closes the gap, at the cost of one extra LLM call per answer.
+- **Some answers are correct but incomplete** (correctness 0.75). For example, q11 ("how do I declare a sidecar?")
+  was right but vague. The passage that actually explains the container-level `restartPolicy` field was ranked
+  **#1 by plain hybrid search but demoted to #7 by the reranker**, so it never reached the LLM (top 5).
+  Rerankers win on average (+9 pts recall@5 here) but can lose individual queries. Possible mitigations
+  are fusing the reranker score with the RRF rank instead of replacing it, or a larger top_k.
+- **The retry loop did its job once.** q22's first draft failed validation, and the retry with
+  validator feedback produced a valid, cited answer.
+- **Refusals are split across the two layers as designed.** 5 of 6 out-of-scope questions were refused by the
+  confidence gate (no LLM tokens spent). The 6th, about the CNCF donation year, retrieved on-topic
+  Kubernetes chunks with 0.56 confidence, and the LLM itself set `answerable=false`.
+- **Caveat: Haiku is judging Haiku.** Models tend to rate their own outputs favourably, so these scores are
+  probably optimistic. A stronger or different judge (`--judge-model claude-sonnet-5-5`) is the next step
+  toward trustworthy numbers. The 0.30 confidence threshold was also tuned on this same set.
 
 ## Design decisions and tradeoffs
 
@@ -149,6 +177,7 @@ written to [`eval/reports/results.md`](eval/reports/results.md) and checked agai
 | Contextual retrieval with prompt caching | Fewer retrieval failures on chunks that make no sense out of context, at a fraction of the token cost |
 | Structured outputs for citations | Valid JSON is guaranteed, so there's no parsing code to fail |
 | MCP server (`askdocs-mcp`) | Agents such as Claude Code, Claude Desktop and IDE assistants can query the docs as a tool |
+| Keyless auth: `ant` login locally, OIDC Workload Identity Federation in CI | No long-lived API key anywhere: nothing to leak, nothing to rotate |
 | Passage-level eval + dataset integrity test | Metrics that can actually tell the retrieval modes apart, on gold labels that are verified |
 | `uv` + `ruff` + embedded Qdrant | Fast, reproducible setup; no Docker needed for local development |
 
@@ -156,7 +185,7 @@ written to [`eval/reports/results.md`](eval/reports/results.md) and checked agai
 
 ```bash
 uv sync --all-extras
-cp .env.example .env              # add ANTHROPIC_API_KEY (or set ASKDOCS_LLM_PROVIDER=ollama)
+ant auth login                    # or put ANTHROPIC_API_KEY in .env, or set ASKDOCS_LLM_PROVIDER=ollama
 uv run askdocs ingest             # ~90 s on a laptop CPU: 110 docs -> 1,530 chunks
 uv run askdocs ask "What is a PodDisruptionBudget?"
 uv run uvicorn askdocs.api.app:app --reload        # POST /ask, GET /health
@@ -188,7 +217,15 @@ uv run python eval/run_eval.py --check eval/eval_thresholds.yaml                
 On every PR, [`ci.yml`](.github/workflows/ci.yml) runs lint, the unit tests (no network LLM calls),
 builds the index and runs the eval. The build fails if any metric drops below its minimum in
 `eval_thresholds.yaml`, or a bounded metric goes above its maximum (for example, a false-refusal rate
-above 5%). When the `ANTHROPIC_API_KEY` repo secret is set, the answer-quality metrics are gated too.
+above 5%). Once Workload Identity Federation is configured, the answer-quality metrics are gated too.
+
+**CI has no API key to leak.** The eval job authenticates to the Claude API with **Workload Identity Federation**:
+GitHub issues a short-lived OIDC token for this repository's workflow, and Anthropic exchanges it for a
+10-minute access token. The only repo settings are non-secret IDs (`ANTHROPIC_FEDERATION_RULE_ID`,
+`ANTHROPIC_ORGANIZATION_ID`, `ANTHROPIC_SERVICE_ACCOUNT_ID`, stored as repo *variables*). The rule is pinned to
+`repo:siri-dhillon/ask-my-docs:`, so other repos and forks can't use it. Because GitHub's tokens only
+live about 5 minutes and the eval takes longer, the job refreshes the token file in the background.
+Locally, `ant auth login` does the same job: the SDK picks up the signed-in profile, and no key sits in `.env`.
 The results table goes in the job summary and the JSON report is uploaded as an artifact.
 
 ## Repo layout
