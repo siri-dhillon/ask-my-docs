@@ -29,10 +29,11 @@ class Settings(BaseSettings):
     retrieval_mode: Literal["vector", "hybrid", "hybrid_rerank"] = "hybrid_rerank"
     candidates_per_retriever: int = 30  # how deep each retriever searches before fusion
     rrf_k: int = 60  # standard RRF constant from Cormack et al. (2009)
-    rerank_pool: int = 30  # fused candidates sent to the cross-encoder (latency ∝ pool size)
-    rerank_model: str = "Xenova/ms-marco-MiniLM-L-6-v2"  # or BAAI/bge-reranker-base (bigger, slower)
+    rerank_pool: int = 20  # fused candidates sent to the cross-encoder (latency ∝ pool size)
+    rerank_batch_size: int = 8  # small batches = less padding to the longest pair (~40% faster on CPU)
+    rerank_model: str = "BAAI/bge-reranker-base"  # best quality in our eval; "Xenova/ms-marco-MiniLM-L-6-v2" is ~3x faster
     top_k: int = 5  # chunks handed to the LLM
-    min_confidence: float = 0.15  # refuse when reranker probability of best chunk is below this
+    min_confidence: float = 0.30  # refuse when reranker probability of best chunk is below this (calibrated on eval set)
     min_vector_score: float = 0.55  # same idea for modes without a reranker (cosine similarity)
 
     # --- contextual retrieval (optional, costs LLM calls at index time) ---

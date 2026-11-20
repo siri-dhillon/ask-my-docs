@@ -6,6 +6,6 @@ __pycache__/
 .cache/
 .pytest_cache/
 .ruff_cache/
-eval/reports/*.json
+eval/reports/report-*.json
 !eval/reports/baseline.json
 .DS_Store

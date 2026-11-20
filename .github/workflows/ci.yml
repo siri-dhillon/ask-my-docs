@@ -1,0 +1,63 @@
+name: ci
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
+      - run: uv sync --all-extras --frozen
+      - run: uv run ruff check .
+      - run: uv run ruff format --check .
+      - run: uv run pytest -q
+
+  eval-gate:
+    needs: test
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    env:
+      FASTEMBED_CACHE_PATH: ~/.cache/fastembed
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
+      - run: uv sync --frozen
+      - name: Cache embedding / reranker models
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/fastembed
+          key: fastembed-${{ hashFiles('src/askdocs/config.py') }}
+      - name: Build index
+        run: uv run askdocs ingest
+      - name: Eval (retrieval always; answers when ANTHROPIC_API_KEY secret is set)
+        run: |
+          if [ -n "$ANTHROPIC_API_KEY" ]; then
+            uv run python eval/run_eval.py --check eval/eval_thresholds.yaml
+          else
+            echo "::notice::ANTHROPIC_API_KEY not set - running retrieval-only eval"
+            uv run python eval/run_eval.py --retrieval-only --check eval/eval_thresholds.yaml
+          fi
+      - name: Job summary
+        if: always()
+        run: |
+          echo "## Eval results" >> "$GITHUB_STEP_SUMMARY"
+          cat eval/reports/results.md >> "$GITHUB_STEP_SUMMARY" || true
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: eval-report
+          path: eval/reports/

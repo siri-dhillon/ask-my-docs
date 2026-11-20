@@ -1,0 +1,1017 @@
+{
+  "timestamp": "2026-11-20T01:03:58+00:00",
+  "config": {
+    "chunk_size": "220",
+    "chunk_overlap": "40",
+    "dense_model": "BAAI/bge-small-en-v1.5",
+    "sparse_model": "Qdrant/bm25",
+    "candidates_per_retriever": "30",
+    "rerank_pool": "20",
+    "rerank_model": "BAAI/bge-reranker-base",
+    "top_k": "5",
+    "min_confidence": "0.3",
+    "contextualize": "False",
+    "llm_provider": "anthropic",
+    "llm_model": "claude-haiku-5-5",
+    "citation_check": "lexical"
+  },
+  "n_questions": 51,
+  "retrieval": {
+    "vector": {
+      "doc_recall@1": 0.8444,
+      "doc_recall@3": 0.9556,
+      "doc_recall@5": 1.0,
+      "doc_recall@10": 1.0,
+      "doc_mrr@10": 0.9111,
+      "recall@1": 0.5333,
+      "recall@3": 0.8222,
+      "recall@5": 0.8444,
+      "recall@10": 0.9556,
+      "mrr@10": 0.6935,
+      "latency_p50_ms": 3.1,
+      "latency_p95_ms": 3.9,
+      "n": 45
+    },
+    "hybrid": {
+      "doc_recall@1": 0.8444,
+      "doc_recall@3": 1.0,
+      "doc_recall@5": 1.0,
+      "doc_recall@10": 1.0,
+      "doc_mrr@10": 0.9111,
+      "recall@1": 0.5333,
+      "recall@3": 0.8444,
+      "recall@5": 0.8667,
+      "recall@10": 0.9778,
+      "mrr@10": 0.7045,
+      "latency_p50_ms": 13.4,
+      "latency_p95_ms": 16.3,
+      "n": 45
+    },
+    "hybrid_rerank": {
+      "doc_recall@1": 0.9111,
+      "doc_recall@3": 1.0,
+      "doc_recall@5": 1.0,
+      "doc_recall@10": 1.0,
+      "doc_mrr@10": 0.9556,
+      "recall@1": 0.6667,
+      "recall@3": 0.9556,
+      "recall@5": 0.9778,
+      "recall@10": 1.0,
+      "mrr@10": 0.8076,
+      "latency_p50_ms": 1119.5,
+      "latency_p95_ms": 1284.5,
+      "n": 45
+    },
+    "confidence_gate": {
+      "unanswerable_refused_rate": 0.8333,
+      "answerable_false_refusal_rate": 0.0
+    }
+  },
+  "retrieval_per_question": [
+    {
+      "id": "q01",
+      "mode": "vector",
+      "doc_rank": 1,
+      "passage_rank": 1,
+      "top_source": "k8s/md/configuration/configmap.md"
+    },
+    {
+      "id": "q02",
+      "mode": "vector",
+      "doc_rank": 1,
+      "passage_rank": 1,
+      "top_source": "k8s/md/configuration/secret.md"
+    },
+    {
+      "id": "q03",
+      "mode": "vector",
+      "doc_rank": 1,
+      "passage_rank": 1,
+      "top_source": "k8s/md/workloads/pods/pod-termination.md"
+    },
+    {
+      "id": "q04",
+      "mode": "vector",
+      "doc_rank": 2,
+      "passage_rank": 3,
+      "top_source": "k8s/md/workloads/management.md"
+    },
+    {
+      "id": "q05",
+      "mode": "vector",
+      "doc_rank": 1,
+      "passage_rank": 2,
+      "top_source": "k8s/md/workloads/controllers/statefulset.md"
+    },
+    {
+      "id": "q06",
+      "mode": "vector",
+      "doc_rank": 1,
+      "passage_rank": 2,
+      "top_source": "k8s/md/workloads/controllers/daemonset.md"
+    },
+    {
+      "id": "q07",
+      "mode": "vector",
+      "doc_rank": 1,
+      "passage_rank": 1,
+      "top_source": "k8s/md/workloads/controllers/job.md"
+    },
+    {
+      "id": "q08",
+      "mode": "vector",
+      "doc_rank": 1,
+      "passage_rank": 2,
+      "top_source": "k8s/md/workloads/controllers/job.md"
+    },
+    {
+      "id": "q09",
+      "mode": "vector",
+      "doc_rank": 1,
+      "passage_rank": 2,
+      "top_source": "k8s/md/workloads/controllers/cron-jobs.md"
+    },
+    {
+      "id": "q10",
+      "mode": "vector",
+      "doc_rank": 1,
+      "passage_rank": 4,
+      "top_source": "k8s/md/workloads/pods/init-containers.md"
+    },
+    {
+      "id": "q11",
+      "mode": "vector",
+      "doc_rank": 4,
+      "passage_rank": 6,
+      "top_source": "k8s/md/configuration/index.md"
+    },
+    {
+      "id": "q12",
+      "mode": "vector",
+      "doc_rank": 4,
+      "passage_rank": null,
+      "top_source": "k8s/md/workloads/pods/disruptions.md"
+    },
+    {
+      "id": "q13",
+      "mode": "vector",
+      "doc_rank": 1,
+      "passage_rank": 2,
+      "top_source": "k8s/md/workloads/pods/disruptions.md"
+    },
+    {
+      "id": "q14",
+      "mode": "vector",
+      "doc_rank": 2,
+      "passage_rank": 2,
+      "top_source": "k8s/md/workloads/pods/index.md"
+    },
+    {
+      "id": "q15",
+      "mode": "vector",
+      "doc_rank": 1,
+      "passage_rank": 1,
+      "top_source": "k8s/md/workloads/pods/ephemeral-containers.md"
+    },
+    {
+      "id": "q16",
+      "mode": "vector",
+      "doc_rank": 1,
+      "passage_rank": 9,
+      "top_source": "k8s/md/workloads/autoscaling/horizontal-pod-autoscale.md"
+    },
+    {
+      "id": "q17",
+      "mode": "vector",
+      "doc_rank": 1,
+      "passage_rank": 1,
+      "top_source": "k8s/md/workloads/autoscaling/vertical-pod-autoscale.md"
+    },
+    {
+      "id": "q18",
+      "mode": "vector",
+      "doc_rank": 1,
+      "passage_rank": 1,
+      "top_source": "k8s/md/workloads/controllers/replicaset.md"
+    },
+    {
+      "id": "q19",
+      "mode": "vector",
+      "doc_rank": 1,
+      "passage_rank": 1,
+      "top_source": "k8s/md/workloads/pods/pod-lifecycle.md"
+    },
+    {
+      "id": "q20",
+      "mode": "vector",
+      "doc_rank": 1,
+      "passage_rank": 1,
+      "top_source": "k8s/md/services-networking/service.md"
+    },
+    {
+      "id": "q21",
+      "mode": "vector",
+      "doc_rank": 1,
+      "passage_rank": 1,
+      "top_source": "k8s/md/services-networking/service.md"
+    },
+    {
+      "id": "q22",
+      "mode": "vector",
+      "doc_rank": 1,
+      "passage_rank": 9,
+      "top_source": "k8s/md/services-networking/network-policies.md"
+    },
+    {
+      "id": "q23",
+      "mode": "vector",
+      "doc_rank": 2,
+      "passage_rank": 2,
+      "top_source": "k8s/md/services-networking/ingress-controllers.md"
+    },
+    {
+      "id": "q24",
+      "mode": "vector",
+      "doc_rank": 2,
+      "passage_rank": 2,
+      "top_source": "k8s/md/services-networking/service.md"
+    },
+    {
+      "id": "q25",
+      "mode": "vector",
+      "doc_rank": 1,
+      "passage_rank": 1,
+      "top_source": "k8s/md/services-networking/service-traffic-policy.md"
+    },
+    {
+      "id": "q26",
+      "mode": "vector",
+      "doc_rank": 1,
+      "passage_rank": 1,
+      "top_source": "k8s/md/services-networking/gateway.md"
+    },
+    {
+      "id": "q27",
+      "mode": "vector",
+      "doc_rank": 1,
+      "passage_rank": 8,
+      "top_source": "k8s/md/services-networking/endpoint-slices.md"
+    },
+    {
+      "id": "q28",
+      "mode": "vector",
+      "doc_rank": 1,
+      "passage_rank": 1,
+      "top_source": "k8s/md/storage/persistent-volumes.md"
+    },
+    {
+      "id": "q29",
+      "mode": "vector",
+      "doc_rank": 1,
+      "passage_rank": 1,
+      "top_source": "k8s/md/storage/persistent-volumes.md"
+    },
+    {
+      "id": "q30",
+      "mode": "vector",
+      "doc_rank": 1,
+      "passage_rank": 1,
+      "top_source": "k8s/md/storage/storage-classes.md"
+    },
+    {
+      "id": "q31",
+      "mode": "vector",
+      "doc_rank": 1,
+      "passage_rank": 1,
+      "top_source": "k8s/md/storage/volume-snapshots.md"
+    },
+    {
+      "id": "q32",
+      "mode": "vector",
+      "doc_rank": 1,
+      "passage_rank": 1,
+      "top_source": "k8s/md/storage/projected-volumes.md"
+    },
+    {
+      "id": "q33",
+      "mode": "vector",
+      "doc_rank": 1,
+      "passage_rank": 1,
+      "top_source": "k8s/md/overview/working-with-objects/labels.md"
+    },
+    {
+      "id": "q34",
+      "mode": "vector",
+      "doc_rank": 1,
+      "passage_rank": 1,
+      "top_source": "k8s/md/overview/working-with-objects/names.md"
+    },
+    {
+      "id": "q35",
+      "mode": "vector",
+      "doc_rank": 1,
+      "passage_rank": 2,
+      "top_source": "k8s/md/overview/working-with-objects/namespaces.md"
+    },
+    {
+      "id": "q36",
+      "mode": "vector",
+      "doc_rank": 1,
+      "passage_rank": 1,
+      "top_source": "k8s/md/overview/working-with-objects/finalizers.md"
+    },
+    {
+      "id": "q37",
+      "mode": "vector",
+      "doc_rank": 1,
+      "passage_rank": 1,
+      "top_source": "k8s/md/overview/working-with-objects/annotations.md"
+    },
+    {
+      "id": "q38",
+      "mode": "vector",
+      "doc_rank": 1,
+      "passage_rank": 1,
+      "top_source": "k8s/md/configuration/manage-resources-containers.md"
+    },
+    {
+      "id": "q39",
+      "mode": "vector",
+      "doc_rank": 1,
+      "passage_rank": 1,
+      "top_source": "k8s/md/containers/images.md"
+    },
+    {
+      "id": "q40",
+      "mode": "vector",
+      "doc_rank": 1,
+      "passage_rank": 1,
+      "top_source": "k8s/md/containers/container-lifecycle-hooks.md"
+    },
+    {
+      "id": "q41",
+      "mode": "vector",
+      "doc_rank": 1,
+      "passage_rank": 2,
+      "top_source": "k8s/html/security/pod-security-admission.html"
+    },
+    {
+      "id": "q42",
+      "mode": "vector",
+      "doc_rank": 1,
+      "passage_rank": 9,
+      "top_source": "k8s/html/security/pod-security-admission.html"
+    },
+    {
+      "id": "q43",
+      "mode": "vector",
+      "doc_rank": 1,
+      "passage_rank": 2,
+      "top_source": "k8s/html/security/secrets-good-practices.html"
+    },
+    {
+      "id": "q44",
+      "mode": "vector",
+      "doc_rank": 2,
+      "passage_rank": 2,
+      "top_source": "k8s/html/security/application-security-checklist.html"
+    },
+    {
+      "id": "q45",
+      "mode": "vector",
+      "doc_rank": 1,
+      "passage_rank": null,
+      "top_source": "k8s/html/security/rbac-good-practices.html"
+    },
+    {
+      "id": "q01",
+      "mode": "hybrid",
+      "doc_rank": 1,
+      "passage_rank": 2,
+      "top_source": "k8s/md/configuration/configmap.md"
+    },
+    {
+      "id": "q02",
+      "mode": "hybrid",
+      "doc_rank": 1,
+      "passage_rank": 1,
+      "top_source": "k8s/md/configuration/secret.md"
+    },
+    {
+      "id": "q03",
+      "mode": "hybrid",
+      "doc_rank": 1,
+      "passage_rank": 1,
+      "top_source": "k8s/md/workloads/pods/pod-termination.md"
+    },
+    {
+      "id": "q04",
+      "mode": "hybrid",
+      "doc_rank": 2,
+      "passage_rank": 2,
+      "top_source": "k8s/md/workloads/management.md"
+    },
+    {
+      "id": "q05",
+      "mode": "hybrid",
+      "doc_rank": 1,
+      "passage_rank": 6,
+      "top_source": "k8s/md/workloads/controllers/statefulset.md"
+    },
+    {
+      "id": "q06",
+      "mode": "hybrid",
+      "doc_rank": 1,
+      "passage_rank": 6,
+      "top_source": "k8s/md/workloads/controllers/daemonset.md"
+    },
+    {
+      "id": "q07",
+      "mode": "hybrid",
+      "doc_rank": 1,
+      "passage_rank": 1,
+      "top_source": "k8s/md/workloads/controllers/job.md"
+    },
+    {
+      "id": "q08",
+      "mode": "hybrid",
+      "doc_rank": 1,
+      "passage_rank": 1,
+      "top_source": "k8s/md/workloads/controllers/ttlafterfinished.md"
+    },
+    {
+      "id": "q09",
+      "mode": "hybrid",
+      "doc_rank": 1,
+      "passage_rank": 2,
+      "top_source": "k8s/md/workloads/controllers/cron-jobs.md"
+    },
+    {
+      "id": "q10",
+      "mode": "hybrid",
+      "doc_rank": 1,
+      "passage_rank": 2,
+      "top_source": "k8s/md/workloads/pods/init-containers.md"
+    },
+    {
+      "id": "q11",
+      "mode": "hybrid",
+      "doc_rank": 1,
+      "passage_rank": 1,
+      "top_source": "k8s/md/workloads/pods/sidecar-containers.md"
+    },
+    {
+      "id": "q12",
+      "mode": "hybrid",
+      "doc_rank": 3,
+      "passage_rank": null,
+      "top_source": "k8s/md/workloads/pods/disruptions.md"
+    },
+    {
+      "id": "q13",
+      "mode": "hybrid",
+      "doc_rank": 1,
+      "passage_rank": 1,
+      "top_source": "k8s/md/workloads/pods/disruptions.md"
+    },
+    {
+      "id": "q14",
+      "mode": "hybrid",
+      "doc_rank": 2,
+      "passage_rank": 2,
+      "top_source": "k8s/md/workloads/pods/index.md"
+    },
+    {
+      "id": "q15",
+      "mode": "hybrid",
+      "doc_rank": 1,
+      "passage_rank": 2,
+      "top_source": "k8s/md/workloads/pods/ephemeral-containers.md"
+    },
+    {
+      "id": "q16",
+      "mode": "hybrid",
+      "doc_rank": 1,
+      "passage_rank": 7,
+      "top_source": "k8s/md/workloads/autoscaling/horizontal-pod-autoscale.md"
+    },
+    {
+      "id": "q17",
+      "mode": "hybrid",
+      "doc_rank": 1,
+      "passage_rank": 1,
+      "top_source": "k8s/md/workloads/autoscaling/vertical-pod-autoscale.md"
+    },
+    {
+      "id": "q18",
+      "mode": "hybrid",
+      "doc_rank": 1,
+      "passage_rank": 1,
+      "top_source": "k8s/md/workloads/controllers/replicaset.md"
+    },
+    {
+      "id": "q19",
+      "mode": "hybrid",
+      "doc_rank": 1,
+      "passage_rank": 2,
+      "top_source": "k8s/md/workloads/pods/pod-lifecycle.md"
+    },
+    {
+      "id": "q20",
+      "mode": "hybrid",
+      "doc_rank": 1,
+      "passage_rank": 1,
+      "top_source": "k8s/md/services-networking/service.md"
+    },
+    {
+      "id": "q21",
+      "mode": "hybrid",
+      "doc_rank": 1,
+      "passage_rank": 1,
+      "top_source": "k8s/md/services-networking/service.md"
+    },
+    {
+      "id": "q22",
+      "mode": "hybrid",
+      "doc_rank": 1,
+      "passage_rank": 6,
+      "top_source": "k8s/md/services-networking/network-policies.md"
+    },
+    {
+      "id": "q23",
+      "mode": "hybrid",
+      "doc_rank": 2,
+      "passage_rank": 2,
+      "top_source": "k8s/md/services-networking/ingress-controllers.md"
+    },
+    {
+      "id": "q24",
+      "mode": "hybrid",
+      "doc_rank": 1,
+      "passage_rank": 1,
+      "top_source": "k8s/md/services-networking/dns-pod-service.md"
+    },
+    {
+      "id": "q25",
+      "mode": "hybrid",
+      "doc_rank": 1,
+      "passage_rank": 1,
+      "top_source": "k8s/md/services-networking/service-traffic-policy.md"
+    },
+    {
+      "id": "q26",
+      "mode": "hybrid",
+      "doc_rank": 1,
+      "passage_rank": 1,
+      "top_source": "k8s/md/services-networking/gateway.md"
+    },
+    {
+      "id": "q27",
+      "mode": "hybrid",
+      "doc_rank": 3,
+      "passage_rank": 4,
+      "top_source": "k8s/md/services-networking/service.md"
+    },
+    {
+      "id": "q28",
+      "mode": "hybrid",
+      "doc_rank": 1,
+      "passage_rank": 1,
+      "top_source": "k8s/md/storage/persistent-volumes.md"
+    },
+    {
+      "id": "q29",
+      "mode": "hybrid",
+      "doc_rank": 1,
+      "passage_rank": 1,
+      "top_source": "k8s/md/storage/persistent-volumes.md"
+    },
+    {
+      "id": "q30",
+      "mode": "hybrid",
+      "doc_rank": 1,
+      "passage_rank": 1,
+      "top_source": "k8s/md/storage/storage-classes.md"
+    },
+    {
+      "id": "q31",
+      "mode": "hybrid",
+      "doc_rank": 1,
+      "passage_rank": 1,
+      "top_source": "k8s/md/storage/volume-snapshots.md"
+    },
+    {
+      "id": "q32",
+      "mode": "hybrid",
+      "doc_rank": 1,
+      "passage_rank": 3,
+      "top_source": "k8s/md/storage/projected-volumes.md"
+    },
+    {
+      "id": "q33",
+      "mode": "hybrid",
+      "doc_rank": 1,
+      "passage_rank": 1,
+      "top_source": "k8s/md/overview/working-with-objects/labels.md"
+    },
+    {
+      "id": "q34",
+      "mode": "hybrid",
+      "doc_rank": 2,
+      "passage_rank": 2,
+      "top_source": "k8s/md/workloads/pods/pod-hostname.md"
+    },
+    {
+      "id": "q35",
+      "mode": "hybrid",
+      "doc_rank": 1,
+      "passage_rank": 2,
+      "top_source": "k8s/md/overview/working-with-objects/namespaces.md"
+    },
+    {
+      "id": "q36",
+      "mode": "hybrid",
+      "doc_rank": 1,
+      "passage_rank": 1,
+      "top_source": "k8s/md/overview/working-with-objects/finalizers.md"
+    },
+    {
+      "id": "q37",
+      "mode": "hybrid",
+      "doc_rank": 1,
+      "passage_rank": 1,
+      "top_source": "k8s/md/overview/working-with-objects/annotations.md"
+    },
+    {
+      "id": "q38",
+      "mode": "hybrid",
+      "doc_rank": 1,
+      "passage_rank": 1,
+      "top_source": "k8s/md/configuration/manage-resources-containers.md"
+    },
+    {
+      "id": "q39",
+      "mode": "hybrid",
+      "doc_rank": 1,
+      "passage_rank": 1,
+      "top_source": "k8s/md/containers/images.md"
+    },
+    {
+      "id": "q40",
+      "mode": "hybrid",
+      "doc_rank": 1,
+      "passage_rank": 1,
+      "top_source": "k8s/md/containers/container-lifecycle-hooks.md"
+    },
+    {
+      "id": "q41",
+      "mode": "hybrid",
+      "doc_rank": 1,
+      "passage_rank": 2,
+      "top_source": "k8s/html/security/pod-security-admission.html"
+    },
+    {
+      "id": "q42",
+      "mode": "hybrid",
+      "doc_rank": 3,
+      "passage_rank": 3,
+      "top_source": "k8s/html/security/security-checklist.html"
+    },
+    {
+      "id": "q43",
+      "mode": "hybrid",
+      "doc_rank": 1,
+      "passage_rank": 1,
+      "top_source": "k8s/html/security/secrets-good-practices.html"
+    },
+    {
+      "id": "q44",
+      "mode": "hybrid",
+      "doc_rank": 1,
+      "passage_rank": 2,
+      "top_source": "k8s/html/security/service-accounts.html"
+    },
+    {
+      "id": "q45",
+      "mode": "hybrid",
+      "doc_rank": 1,
+      "passage_rank": 7,
+      "top_source": "k8s/html/security/rbac-good-practices.html"
+    },
+    {
+      "id": "q01",
+      "mode": "hybrid_rerank",
+      "doc_rank": 1,
+      "passage_rank": 1,
+      "top_source": "k8s/md/configuration/configmap.md"
+    },
+    {
+      "id": "q02",
+      "mode": "hybrid_rerank",
+      "doc_rank": 1,
+      "passage_rank": 1,
+      "top_source": "k8s/md/configuration/secret.md"
+    },
+    {
+      "id": "q03",
+      "mode": "hybrid_rerank",
+      "doc_rank": 1,
+      "passage_rank": 1,
+      "top_source": "k8s/md/workloads/pods/pod-termination.md"
+    },
+    {
+      "id": "q04",
+      "mode": "hybrid_rerank",
+      "doc_rank": 2,
+      "passage_rank": 2,
+      "top_source": "k8s/md/workloads/management.md"
+    },
+    {
+      "id": "q05",
+      "mode": "hybrid_rerank",
+      "doc_rank": 1,
+      "passage_rank": 2,
+      "top_source": "k8s/md/workloads/controllers/statefulset.md"
+    },
+    {
+      "id": "q06",
+      "mode": "hybrid_rerank",
+      "doc_rank": 1,
+      "passage_rank": 1,
+      "top_source": "k8s/md/workloads/controllers/daemonset.md"
+    },
+    {
+      "id": "q07",
+      "mode": "hybrid_rerank",
+      "doc_rank": 1,
+      "passage_rank": 1,
+      "top_source": "k8s/md/workloads/controllers/job.md"
+    },
+    {
+      "id": "q08",
+      "mode": "hybrid_rerank",
+      "doc_rank": 1,
+      "passage_rank": 2,
+      "top_source": "k8s/md/workloads/controllers/job.md"
+    },
+    {
+      "id": "q09",
+      "mode": "hybrid_rerank",
+      "doc_rank": 1,
+      "passage_rank": 2,
+      "top_source": "k8s/md/workloads/controllers/cron-jobs.md"
+    },
+    {
+      "id": "q10",
+      "mode": "hybrid_rerank",
+      "doc_rank": 1,
+      "passage_rank": 3,
+      "top_source": "k8s/md/workloads/pods/init-containers.md"
+    },
+    {
+      "id": "q11",
+      "mode": "hybrid_rerank",
+      "doc_rank": 1,
+      "passage_rank": 3,
+      "top_source": "k8s/md/workloads/pods/sidecar-containers.md"
+    },
+    {
+      "id": "q12",
+      "mode": "hybrid_rerank",
+      "doc_rank": 1,
+      "passage_rank": 1,
+      "top_source": "k8s/md/workloads/pods/pod-qos.md"
+    },
+    {
+      "id": "q13",
+      "mode": "hybrid_rerank",
+      "doc_rank": 1,
+      "passage_rank": 1,
+      "top_source": "k8s/md/workloads/pods/disruptions.md"
+    },
+    {
+      "id": "q14",
+      "mode": "hybrid_rerank",
+      "doc_rank": 2,
+      "passage_rank": 2,
+      "top_source": "k8s/md/workloads/pods/index.md"
+    },
+    {
+      "id": "q15",
+      "mode": "hybrid_rerank",
+      "doc_rank": 1,
+      "passage_rank": 1,
+      "top_source": "k8s/md/workloads/pods/ephemeral-containers.md"
+    },
+    {
+      "id": "q16",
+      "mode": "hybrid_rerank",
+      "doc_rank": 1,
+      "passage_rank": 1,
+      "top_source": "k8s/md/workloads/autoscaling/horizontal-pod-autoscale.md"
+    },
+    {
+      "id": "q17",
+      "mode": "hybrid_rerank",
+      "doc_rank": 1,
+      "passage_rank": 1,
+      "top_source": "k8s/md/workloads/autoscaling/vertical-pod-autoscale.md"
+    },
+    {
+      "id": "q18",
+      "mode": "hybrid_rerank",
+      "doc_rank": 1,
+      "passage_rank": 1,
+      "top_source": "k8s/md/workloads/controllers/replicaset.md"
+    },
+    {
+      "id": "q19",
+      "mode": "hybrid_rerank",
+      "doc_rank": 1,
+      "passage_rank": 1,
+      "top_source": "k8s/md/workloads/pods/pod-lifecycle.md"
+    },
+    {
+      "id": "q20",
+      "mode": "hybrid_rerank",
+      "doc_rank": 1,
+      "passage_rank": 1,
+      "top_source": "k8s/md/services-networking/service.md"
+    },
+    {
+      "id": "q21",
+      "mode": "hybrid_rerank",
+      "doc_rank": 1,
+      "passage_rank": 2,
+      "top_source": "k8s/md/services-networking/service.md"
+    },
+    {
+      "id": "q22",
+      "mode": "hybrid_rerank",
+      "doc_rank": 1,
+      "passage_rank": 7,
+      "top_source": "k8s/md/services-networking/network-policies.md"
+    },
+    {
+      "id": "q23",
+      "mode": "hybrid_rerank",
+      "doc_rank": 2,
+      "passage_rank": 2,
+      "top_source": "k8s/md/services-networking/ingress-controllers.md"
+    },
+    {
+      "id": "q24",
+      "mode": "hybrid_rerank",
+      "doc_rank": 1,
+      "passage_rank": 1,
+      "top_source": "k8s/md/services-networking/dns-pod-service.md"
+    },
+    {
+      "id": "q25",
+      "mode": "hybrid_rerank",
+      "doc_rank": 1,
+      "passage_rank": 1,
+      "top_source": "k8s/md/services-networking/service-traffic-policy.md"
+    },
+    {
+      "id": "q26",
+      "mode": "hybrid_rerank",
+      "doc_rank": 1,
+      "passage_rank": 1,
+      "top_source": "k8s/md/services-networking/gateway.md"
+    },
+    {
+      "id": "q27",
+      "mode": "hybrid_rerank",
+      "doc_rank": 1,
+      "passage_rank": 1,
+      "top_source": "k8s/md/services-networking/endpoint-slices.md"
+    },
+    {
+      "id": "q28",
+      "mode": "hybrid_rerank",
+      "doc_rank": 1,
+      "passage_rank": 1,
+      "top_source": "k8s/md/storage/persistent-volumes.md"
+    },
+    {
+      "id": "q29",
+      "mode": "hybrid_rerank",
+      "doc_rank": 1,
+      "passage_rank": 1,
+      "top_source": "k8s/md/storage/persistent-volumes.md"
+    },
+    {
+      "id": "q30",
+      "mode": "hybrid_rerank",
+      "doc_rank": 1,
+      "passage_rank": 1,
+      "top_source": "k8s/md/storage/storage-classes.md"
+    },
+    {
+      "id": "q31",
+      "mode": "hybrid_rerank",
+      "doc_rank": 1,
+      "passage_rank": 1,
+      "top_source": "k8s/md/storage/volume-snapshots.md"
+    },
+    {
+      "id": "q32",
+      "mode": "hybrid_rerank",
+      "doc_rank": 1,
+      "passage_rank": 1,
+      "top_source": "k8s/md/storage/projected-volumes.md"
+    },
+    {
+      "id": "q33",
+      "mode": "hybrid_rerank",
+      "doc_rank": 1,
+      "passage_rank": 1,
+      "top_source": "k8s/md/overview/working-with-objects/labels.md"
+    },
+    {
+      "id": "q34",
+      "mode": "hybrid_rerank",
+      "doc_rank": 1,
+      "passage_rank": 1,
+      "top_source": "k8s/md/overview/working-with-objects/names.md"
+    },
+    {
+      "id": "q35",
+      "mode": "hybrid_rerank",
+      "doc_rank": 1,
+      "passage_rank": 1,
+      "top_source": "k8s/md/overview/working-with-objects/namespaces.md"
+    },
+    {
+      "id": "q36",
+      "mode": "hybrid_rerank",
+      "doc_rank": 1,
+      "passage_rank": 1,
+      "top_source": "k8s/md/overview/working-with-objects/finalizers.md"
+    },
+    {
+      "id": "q37",
+      "mode": "hybrid_rerank",
+      "doc_rank": 1,
+      "passage_rank": 2,
+      "top_source": "k8s/md/overview/working-with-objects/labels.md"
+    },
+    {
+      "id": "q38",
+      "mode": "hybrid_rerank",
+      "doc_rank": 2,
+      "passage_rank": 3,
+      "top_source": "k8s/md/workloads/pods/index.md"
+    },
+    {
+      "id": "q39",
+      "mode": "hybrid_rerank",
+      "doc_rank": 1,
+      "passage_rank": 1,
+      "top_source": "k8s/md/containers/images.md"
+    },
+    {
+      "id": "q40",
+      "mode": "hybrid_rerank",
+      "doc_rank": 1,
+      "passage_rank": 1,
+      "top_source": "k8s/md/containers/container-lifecycle-hooks.md"
+    },
+    {
+      "id": "q41",
+      "mode": "hybrid_rerank",
+      "doc_rank": 1,
+      "passage_rank": 2,
+      "top_source": "k8s/html/security/pod-security-admission.html"
+    },
+    {
+      "id": "q42",
+      "mode": "hybrid_rerank",
+      "doc_rank": 1,
+      "passage_rank": 2,
+      "top_source": "k8s/html/security/pod-security-admission.html"
+    },
+    {
+      "id": "q43",
+      "mode": "hybrid_rerank",
+      "doc_rank": 1,
+      "passage_rank": 1,
+      "top_source": "k8s/html/security/secrets-good-practices.html"
+    },
+    {
+      "id": "q44",
+      "mode": "hybrid_rerank",
+      "doc_rank": 1,
+      "passage_rank": 1,
+      "top_source": "k8s/html/security/service-accounts.html"
+    },
+    {
+      "id": "q45",
+      "mode": "hybrid_rerank",
+      "doc_rank": 1,
+      "passage_rank": 5,
+      "top_source": "k8s/html/security/rbac-good-practices.html"
+    }
+  ]
+}

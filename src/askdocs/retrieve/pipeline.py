@@ -37,7 +37,7 @@ class Retriever:
     @property
     def reranker(self) -> Reranker:
         if self._reranker is None:
-            self._reranker = CrossEncoderReranker(self.s.rerank_model)
+            self._reranker = CrossEncoderReranker(self.s.rerank_model, self.s.rerank_batch_size)
         return self._reranker
 
     def retrieve(self, query: str, mode: Mode | None = None, top_k: int | None = None) -> RetrievalResult:

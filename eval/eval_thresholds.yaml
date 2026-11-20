@@ -1,0 +1,22 @@
+# CI gate: run_eval.py --check fails the build if any metric drops below its minimum.
+# Set a little below current results so noise doesn't flake, but real regressions fail.
+retrieval:
+  hybrid_rerank:
+    recall@5: 0.93        # passage-level: answer-bearing chunk in the top 5 given to the LLM
+    mrr@10: 0.75
+    doc_recall@5: 0.97
+  hybrid:
+    recall@10: 0.93
+  confidence_gate:
+    unanswerable_refused_rate: 0.66
+answer:                    # only checked when the answer eval ran (needs an LLM API key)
+  faithfulness: 0.90
+  citation_accuracy: 0.85
+  answer_relevance: 0.80
+  answer_correctness: 0.70
+  answer_rate: 0.90
+  unanswerable_refusal_rate: 0.80
+max:                       # upper bounds
+  retrieval:
+    confidence_gate:
+      answerable_false_refusal_rate: 0.05

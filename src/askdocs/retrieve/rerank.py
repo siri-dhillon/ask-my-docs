@@ -23,8 +23,9 @@ def sigmoid(x: float) -> float:
 
 
 class CrossEncoderReranker:
-    def __init__(self, model_name: str):
+    def __init__(self, model_name: str, batch_size: int = 8):
         self.model_name = model_name
+        self.batch_size = batch_size
 
     @cached_property
     def model(self) -> TextCrossEncoder:
@@ -34,4 +35,4 @@ class CrossEncoderReranker:
         """Return relevance probabilities in [0, 1] (sigmoid of the raw logits)."""
         if not texts:
             return []
-        return [sigmoid(float(s)) for s in self.model.rerank(query, texts)]
+        return [sigmoid(float(s)) for s in self.model.rerank(query, texts, batch_size=self.batch_size)]
