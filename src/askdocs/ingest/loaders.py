@@ -36,7 +36,8 @@ def load_markdown(text: str, fallback_title: str) -> tuple[str, list[Section]]:
         m = None if in_fence else _MD_HEADING.match(line)
         if m:
             _flush(stack, buf, sections)
-            level, heading = len(m.group(1)), m.group(2).strip()
+            level = len(m.group(1))
+            heading = re.sub(r"\s*\{#[^}]*\}\s*$", "", m.group(2)).strip()  # drop Hugo/Pandoc anchors
             if level == 1 and not title:
                 title = heading
             stack = stack[: level - 1] + [""] * max(0, level - 1 - len(stack)) + [heading]

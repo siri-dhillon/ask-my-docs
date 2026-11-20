@@ -19,7 +19,7 @@ Pods move through phases.
 kubectl get pods
 ```
 
-### Restart policy
+### Restart policy {#restart-policy}
 
 Always, OnFailure, Never.
 """

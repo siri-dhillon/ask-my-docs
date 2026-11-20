@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-20T01:03:58+00:00",
+  "timestamp": "2026-11-20T01:08:20+00:00",
   "config": {
     "chunk_size": "220",
     "chunk_overlap": "40",
@@ -22,14 +22,14 @@
       "doc_recall@3": 0.9556,
       "doc_recall@5": 1.0,
       "doc_recall@10": 1.0,
-      "doc_mrr@10": 0.9111,
+      "doc_mrr@10": 0.9089,
       "recall@1": 0.5333,
       "recall@3": 0.8222,
       "recall@5": 0.8444,
       "recall@10": 0.9556,
-      "mrr@10": 0.6935,
+      "mrr@10": 0.6921,
       "latency_p50_ms": 3.1,
-      "latency_p95_ms": 3.9,
+      "latency_p95_ms": 4.1,
       "n": 45
     },
     "hybrid": {
@@ -37,14 +37,14 @@
       "doc_recall@3": 1.0,
       "doc_recall@5": 1.0,
       "doc_recall@10": 1.0,
-      "doc_mrr@10": 0.9111,
+      "doc_mrr@10": 0.9148,
       "recall@1": 0.5333,
       "recall@3": 0.8444,
       "recall@5": 0.8667,
       "recall@10": 0.9778,
-      "mrr@10": 0.7045,
-      "latency_p50_ms": 13.4,
-      "latency_p95_ms": 16.3,
+      "mrr@10": 0.7071,
+      "latency_p50_ms": 14.2,
+      "latency_p95_ms": 17.0,
       "n": 45
     },
     "hybrid_rerank": {
@@ -54,12 +54,12 @@
       "doc_recall@10": 1.0,
       "doc_mrr@10": 0.9556,
       "recall@1": 0.6667,
-      "recall@3": 0.9556,
-      "recall@5": 0.9778,
+      "recall@3": 0.9333,
+      "recall@5": 0.9556,
       "recall@10": 1.0,
-      "mrr@10": 0.8076,
-      "latency_p50_ms": 1119.5,
-      "latency_p95_ms": 1284.5,
+      "mrr@10": 0.8034,
+      "latency_p50_ms": 1218.1,
+      "latency_p95_ms": 1450.6,
       "n": 45
     },
     "confidence_gate": {
@@ -135,20 +135,20 @@
       "id": "q10",
       "mode": "vector",
       "doc_rank": 1,
-      "passage_rank": 4,
+      "passage_rank": 5,
       "top_source": "k8s/md/workloads/pods/init-containers.md"
     },
     {
       "id": "q11",
       "mode": "vector",
-      "doc_rank": 4,
+      "doc_rank": 5,
       "passage_rank": 6,
       "top_source": "k8s/md/configuration/index.md"
     },
     {
       "id": "q12",
       "mode": "vector",
-      "doc_rank": 4,
+      "doc_rank": 5,
       "passage_rank": null,
       "top_source": "k8s/md/workloads/pods/disruptions.md"
     },
@@ -254,7 +254,7 @@
       "id": "q27",
       "mode": "vector",
       "doc_rank": 1,
-      "passage_rank": 8,
+      "passage_rank": 9,
       "top_source": "k8s/md/services-networking/endpoint-slices.md"
     },
     {
@@ -463,7 +463,7 @@
     {
       "id": "q12",
       "mode": "hybrid",
-      "doc_rank": 3,
+      "doc_rank": 2,
       "passage_rank": null,
       "top_source": "k8s/md/workloads/pods/disruptions.md"
     },
@@ -569,7 +569,7 @@
       "id": "q27",
       "mode": "hybrid",
       "doc_rank": 3,
-      "passage_rank": 4,
+      "passage_rank": 5,
       "top_source": "k8s/md/services-networking/service.md"
     },
     {
@@ -604,7 +604,7 @@
       "id": "q32",
       "mode": "hybrid",
       "doc_rank": 1,
-      "passage_rank": 3,
+      "passage_rank": 2,
       "top_source": "k8s/md/storage/projected-volumes.md"
     },
     {
@@ -772,7 +772,7 @@
       "id": "q11",
       "mode": "hybrid_rerank",
       "doc_rank": 1,
-      "passage_rank": 3,
+      "passage_rank": 7,
       "top_source": "k8s/md/workloads/pods/sidecar-containers.md"
     },
     {
